@@ -12,7 +12,7 @@
   
 # Step 1
  
-### Text-To-Speech using Pyttsx3 
+## Text-To-Speech using Pyttsx3 
   
 </div>
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
   
 # Step 2
  
-### Speech Recognition
+## Speech Recognition
   
 </div>
 
