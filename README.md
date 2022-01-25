@@ -103,7 +103,7 @@ engine.setProperty('rate', 100) # Decrease the Speed Rate x2
 engine.setProperty('rate', 250) # Increase the Speed Rate x1.25
 ```
 
-## Final code of Step 1
+### Final Code of Step 1
 
 ```py
 import pyttsx3
