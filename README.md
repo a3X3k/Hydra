@@ -86,6 +86,26 @@ engine.setProperty('voice', voices[0].id)
 engine.setProperty('voice', voices[1].id)
 ```
 
+- We can also change the Speed of the Speech Engine.
+- Get the Speed Rate of the engine using the `getProperty()` function and print it.
+
+```py
+rate = engine.getProperty('rate')
+print (rate)
+```
+
+- The Default Speed Rate of the Speech Engine is 200.
+- If we set the Speed below 200 the voice will speak slowly and above 200 will increase the speed rate of the engine.
+
+```py
+engine.setProperty('rate', 100) # Decrease the Speed Rate x2
+engine.setProperty('rate', 250) # Increase the Speed Rate x1.25
+```
+
+
+
+
+
 
 
 
