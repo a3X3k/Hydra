@@ -8,17 +8,13 @@
   
 <a href="https://github.com/404"><img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"></a>
 
-# Step 1 
-
-### Installing Pyttsx3 using pip
+# Text-To-Speech using Pyttsx3 
 
 ```py
 pip install pyttsx3
 ```
 
 - This will install the `pyttsx3` library. 
-
-### Text-To-Speech using Pyttsx3
 
 - Import the `pyttsx3` package that we’ve installed using the pip. 
 
@@ -54,8 +50,25 @@ engine.runAndWait()
 engine.stop()
 ```
 
+- We can also change the voice of the engine, the default is the voice of a male named David.
+- To change the voice of the pyttsx3 engine, first, we will have to get the list of objects of voices.
 
+```py
+voices = engine.getProperty('voices')
+```
 
+- The `getProperty()` function of the pyttsx3 package takes a string as a parameter and returns an object matching the string.
+- When we print the voices, we get a list that contains two objects.
+
+  - voices[0] – Male Voice (Default) - Microsoft David Desktop
+  - voices[1] – Female Voice - Microsoft Zira Desktop
+
+- `setProperty()` function is used to set property based on a string.
+
+```py
+engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[1].id)
+```
 
 
 
