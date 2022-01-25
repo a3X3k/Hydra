@@ -15,19 +15,13 @@
 </div>
 
 - `pyttsx3` is a text-to-speech conversion library in Python. 
-
 - Unlike alternative libraries, it works offline and is compatible with both Python 2 and 3. 
-
 - An application invokes the `pyttsx3.init()` factory function to get a reference to a pyttsx3 engine instance. 
-
 - The pyttsx3 module supports two voices first is female and the second is male which is provided by **sapi5** for windows.
-
 - It supports three TTS engines, 
 
   - **sapi5** – SAPI5 on Windows
-  
   - **nsss** – NSSpeechSynthesizer on Mac OS X
- 
   - **espeak** – eSpeak on every other platform
 
 ```py
@@ -50,6 +44,7 @@ engine = pyttsx3.init()
 
 - The Instance of the initialized pyttsx3 package is stored in the **engine** variable. 
 - We are calling the variable engine as it works as the engine and converts Text-To-Speech whenever execute the functions from the package.
+
 - There is a built-in `say()` function in the pyttsx3 package that takes a string value and speaks it out.
 
 ```py
@@ -64,6 +59,7 @@ engine.runAndWait()
 
 - `runAndWait()` function keeps track when the engine starts converting text to speech and waits for that much time, and do not allow the engine to close. 
 - It also synchronizes the processes.
+
 - After all the processes are over, we shall shut down the engine by calling the `stop()` function.
 
 ```py
