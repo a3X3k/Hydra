@@ -10,7 +10,9 @@
 
 <div align = "center">
   
-# Step 1 - Text-To-Speech using Pyttsx3 
+# Step 1
+ 
+### Text-To-Speech using Pyttsx3 
   
 </div>
 
@@ -127,8 +129,22 @@ if __name__ == "__main__":
     speak("Hello Hydra!")
 ```    
 
+<div align = "center">
+  
+# Step 2
+ 
+### Speech Recognition
+  
+</div>
 
+- Speech recognition is the process of converting spoken words to text. 
+- Python supports many speech recognition engines and APIs, including Google Speech Engine, Google Cloud Speech API, Microsoft Bing Voice Recognition and IBM Speech to Text.
+- **Speech Recognition** is a library for performing speech recognition, with support for several engines and APIs, online and offline.
+- The SpeechRecognition module depends on pyaudio. 
 
+```py
+pip install SpeechRecognition
+```
 
 
 
