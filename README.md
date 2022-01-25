@@ -16,6 +16,8 @@
   
 </div>
 
+</br>
+
 - `pyttsx3` is a text-to-speech conversion library in Python. 
 - Unlike alternative libraries, it works offline and is compatible with both Python 2 and 3. 
 - An application invokes the `pyttsx3.init()` factory function to get a reference to a pyttsx3 engine instance. 
@@ -136,6 +138,8 @@ if __name__ == "__main__":
 ## Speech Recognition
   
 </div>
+
+</br>
 
 - Speech recognition is the process of converting spoken words to text. 
 - Python supports many speech recognition engines and APIs, including Google Speech Engine, Google Cloud Speech API, Microsoft Bing Voice Recognition and IBM Speech to Text.
