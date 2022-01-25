@@ -10,7 +10,7 @@
 
 <div align = "center">
   
-# Text-To-Speech using Pyttsx3 
+# Step 1 - Text-To-Speech using Pyttsx3 
   
 </div>
 
@@ -99,10 +99,33 @@ print (rate)
 
 ```py
 engine.setProperty('rate', 100) # Decrease the Speed Rate x2
+
 engine.setProperty('rate', 250) # Increase the Speed Rate x1.25
 ```
 
+## Final code of Step 1
 
+```py
+import pyttsx3
+
+engine = pyttsx3.init()
+
+voices = engine.getProperty('voices')
+
+engine.setProperty('voice', voices[1].id)
+
+engine.setProperty('rate', 140)
+
+def speak(audio):
+
+    print(audio)
+    engine.say(audio)
+    engine.runAndWait()
+
+if __name__ == "__main__":
+
+    speak("Hello Hydra!")
+```    
 
 
 
