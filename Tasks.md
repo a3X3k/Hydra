@@ -8,6 +8,11 @@
 
 </br>
 
+- OS module in Python provides functions for interacting with the operating system. 
+- OS comes under Python’s standard utility modules. 
+- This module provides a portable way of using operating system dependent functionality. 
+- `os.path` module is sub-module of OS module in Python used for common pathname manipulation.
+
 ## Open Apps
 
 ```py
@@ -126,7 +131,37 @@ cv2.destroyAllWindows()
 ```
 
 
+## Play Music
+
+- `os.path.join()` method in Python join one or more path components intelligently. 
+- This method concatenates various path components with exactly one directory separator (‘/’) following each non-empty part except the last path component. 
+- If the last path component to be joined is empty then a directory separator (‘/’) is put at the end. 
+- If a path component represents an absolute path, then all previous components joined are discarded and joining continues from the absolute path component.
+
+```py
+import random
+
+music_directory = "Songs Directory" 
+songs = os.listdir(music_directory)
+os.startfile(os.path.join(music_directory, songs[random.randint(0, <No of Songs>)]))
+```
+
+## Get IP Information
+
+- To get the IP address in Python of your computer we need to import the socket library, and then we can find the IP address of the computer, laptop, etc and they have their unique IP address.
+- First, import the socket module and then get the **host name** using the `socket.gethostname()`.
+- The **IP address** can be found by passing the **host name** as an argument to the `socket.gethostbyname()`.
 
 
+```py
+import socket
 
+host = socket.gethostname()
+
+IP = socket.gethostbyname(host)
+
+print("Host Name is:" + host)
+
+print("Computer IP Address is:" + IP)
+```
 
