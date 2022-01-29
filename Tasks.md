@@ -232,3 +232,34 @@ search.open('http://www.google.com')
 
 -  To open a page in a specific browser, use the `webbrowser.get()` function to specify a particular browser.
 
+
+## Send a WhatsApp Message
+
+- We can automate WhatsApp to send messages using the `pywhatkit` module which utilizes the **web.whatsapp.com** webpage to automate message sending to any number on WhatsApp.
+- To install the pywhatkit module, we can use the pip command.
+
+```py
+pip install pywhatkit
+```
+
+- This command will download the pywhatkit module.
+- To use this python module to send message automatically on WhatsApp at a set time, we need browser and you must have your WhatsApp logged into **web.whatsapp.com** website.
+
+ ```py
+import pywhatkit as kit
+
+kit.sendwhatmsg("+91**", "Message", 18, 21)
+```
+
+- In the above code, we have specified the mobile number on which we want to send the message, then the message, and then the time at which the message has to be sent. 
+- This module follows the 24 hrs time format, hence the time 18:21 is 06:21 PM.
+- Also, you should provide atleast 4-5 minutes future time from the current time while running the script, because if you will set the time 1-2 minute from current time, then the module will give error.
+
+
+
+
+
+
+
+
+
