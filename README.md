@@ -246,6 +246,64 @@ except sr.RequestError as e:
 - Raises a `speech_recognition.UnknownValueError` exception if the speech is unintelligible. 
 - Raises a `speech_recognition.RequestError` exception if the key isn’t valid, the quota for the key is maxed out, or there is no internet connection.
 
+### Final Code of Step 2
 
+```py
+import pyttsx3
+import speech_recognition as sr
+
+engine = pyttsx3.init()
+
+voices = engine.getProperty('voices')
+
+engine.setProperty('voice', voices[1].id)
+
+engine.setProperty('rate', 140)
+
+def speak(audio):
+
+    print(audio)
+    engine.say(audio)
+    engine.runAndWait()
+
+def takecommand():
+
+    r = sr.Recognizer()
+
+    with sr.Microphone() as source:    
+
+        r.adjust_for_ambient_noise(source)     
+
+        print("Listening... ") 
+        r.pause_threshold = 1
+        audio = r.listen(source, timeout = 1, phrase_time_limit = 5)
+
+    try:
+        print("Recognizing... ")
+        query = r.recognize_google(audio, language = 'en-in')
+        print("User said :", query)
+
+    except Exception as e:
+
+        speak("Say that again please")
+        return "Nothing"
+
+    except sr.UnknownValueError:
+
+        print("Could not understand audio")
+        return "Nothing"
+
+    except sr.RequestError as e:
+
+        print("Could not request results; {0}".format(e))
+        return "Nothing"
+
+    return query
+
+
+if __name__ == "__main__":
+
+    takecommand()
+```
 
 
