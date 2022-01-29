@@ -150,8 +150,55 @@ if __name__ == "__main__":
 pip install SpeechRecognition
 ```
 
+- This will install the `SpeechRecognition` library.
+- Import the `SpeechRecognition` package that we’ve installed using the pip. 
 
+```py
+import speech_recognition as sr
+```
 
+- `Recognizer()` is a class of speech_recognition library. 
+- It contains methods that help us to recognize the voice of a particular format.
+- Recognizer() class contains the methods for speech recognition APIs.
+- APIs available for Speech Recognition,
+  - recognize_bing()
+  - recognize_google()
+  - recognize_google_cloud()
+  - recognize_houndify()
+  - recognize_ibm()
+  - recognize_sphinx()
+  - recognize_wit() 
 
+```py
+r = sr.Recognizer()
 
+with sr.Microphone() as source:         
+
+  print("Listening... ") 
+  r.pause_threshold = 1
+  audio = r.listen(source, timeout = 1, phrase_time_limit = 5)
+
+  try:
+  
+       print("Recognizing... ")
+       query = r.recognize_google(audio, language='en-in')
+       print("User said :", query)
+
+  except Exception as e:
+
+       speak("Say that again please")
+       return "Nothing"
+
+  except sr.UnknownValueError:
+
+       print("Could not understand audio")
+       return "Nothing"
+
+  except sr.RequestError as e:
+
+       print("Could not request results; {0}".format(e))
+       return "Nothing"
+
+  return query
+  ```
 
