@@ -55,4 +55,8 @@ if __name__ == "__main__":
     if "open notepad" in query:
 
         os.startfile("C:\\Windows\\system32\\notepad.exe")
+        
+    if "open web browser" in query:
+
+        os.startfile("Browser.exe Path")
 ```
