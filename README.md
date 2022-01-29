@@ -11,6 +11,7 @@
 | 1 | [Text To Speech](https://github.com/a3X3k/Hydra/blob/main/Text%20To%20Speech.md) |
 | 2 | [Speech Recognition](https://github.com/a3X3k/Hydra/blob/main/Speech%20Recognition.md) |
 | 3 | [Greeting Message](https://github.com/a3X3k/Hydra/blob/main/Greetings.md) |
+| 4 | [Tasks](https://github.com/a3X3k/Hydra/blob/main/Tasks.md) |
   
 
 </div>
