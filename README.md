@@ -224,22 +224,23 @@ r.recognize_google(audio_data, key = None, language = "en-US", show_all = False)
 
 ```py
 try:
-        r.recognize_google(audio, language='en-in')
+
+    r.recognize_google(audio, language='en-in')
         
 except Exception as e:
 
-        speak("Say that again please")
-        return "Nothing"
+    speak("Say that again please")
+    return "Nothing"
 
 except sr.UnknownValueError:
 
-        print("Could not understand audio")
-        return "Nothing"
+    print("Could not understand audio")
+    return "Nothing"
 
 except sr.RequestError as e:
 
-        print("Could not request results; {0}".format(e))
-        return "Nothing"
+    print("Could not request results; {0}".format(e))
+    return "Nothing"
 ```
 
 - Raises a `speech_recognition.UnknownValueError` exception if the speech is unintelligible. 
