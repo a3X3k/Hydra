@@ -151,10 +151,15 @@ pip install SpeechRecognition
 ```
 
 - This will install the `SpeechRecognition` library.
-- Import the `SpeechRecognition` package that we’ve installed using the pip. 
 
 ```py
 import speech_recognition as sr
+```
+
+- This will import the `SpeechRecognition` package that we’ve installed using the pip. 
+
+```py
+r = sr.Recognizer()
 ```
 
 - `Recognizer()` is a class of speech_recognition library. 
@@ -170,35 +175,76 @@ import speech_recognition as sr
   - recognize_wit() 
 
 ```py
-r = sr.Recognizer()
-
 with sr.Microphone() as source:         
+```
 
-  print("Listening... ") 
-  r.pause_threshold = 1
-  audio = r.listen(source, timeout = 1, phrase_time_limit = 5)
+- This uses the default Microphone as the audio source. 
 
-  try:
-  
-       print("Recognizing... ")
-       query = r.recognize_google(audio, language='en-in')
-       print("User said :", query)
+```
+r.adjust_for_ambient_noise(source)
+```
 
-  except Exception as e:
+- Listen for 1 second to calibrate the energy threshold for ambient noise levels.
 
-       speak("Say that again please")
-       return "Nothing"
+```py
+r.energy_threshold = 300
+```
 
-  except sr.UnknownValueError:
+- Represents the energy level threshold for sounds. 
+- Values below this threshold are considered silence, and values above this threshold are considered speech. 
 
-       print("Could not understand audio")
-       return "Nothing"
+```py
+r.pause_threshold = 0.8
+```
 
-  except sr.RequestError as e:
+- This represents the minimum length of silence (in seconds) that will register as the end of a phrase.
+- Smaller values result in the recognition completing more quickly, but might result in slower speakers being cut off.
 
-       print("Could not request results; {0}".format(e))
-       return "Nothing"
 
-  return query
-  ```
+```py
+audio = r.listen(source, timeout = 1, phrase_time_limit = 5)
+```
+
+- This records a single phrase from source (an AudioSource instance) into an AudioData instance, which it returns.
+- This is done by waiting until the audio has an energy above `r.energy_threshold` (the user has started speaking), and then recording until it encounters `r.pause_threshold` seconds of silence or there is no more audio input. 
+- The ending silence is not included.
+- The timeout parameter is the maximum number of seconds that it will wait for a phrase to start before giving up and throwing an OSError exception. 
+- If None, it will wait indefinitely.
+- The `phrase_time_limit parameter` is the maximum number of seconds that this will allow a phrase to continue before stopping and returning the part of the phrase processed before the time limit was reached. 
+- The resulting audio will be the phrase cut off at the time limit. 
+- If `phrase_timeout` is None, there will be no phrase time limit.
+
+```py
+r.recognize_google(audio_data, key = None, language = "en-US", show_all = False)
+```
+
+- Performs speech recognition on `audio_data` (an AudioData instance), using the Google Speech Recognition API.
+- The recognition language is determined by language, an IETF language tag like **en-US** or **en-GB**, defaulting to US English. 
+- Returns the most likely transcription if `show_all` is false (the default), else returns the raw API response as a JSON dictionary.
+
+```py
+try:
+        r.recognize_google(audio, language='en-in')
+        
+except Exception as e:
+
+        speak("Say that again please")
+        return "Nothing"
+
+except sr.UnknownValueError:
+
+        print("Could not understand audio")
+        return "Nothing"
+
+except sr.RequestError as e:
+
+        print("Could not request results; {0}".format(e))
+        return "Nothing"
+```
+
+- Raises a `speech_recognition.UnknownValueError` exception if the speech is unintelligible. 
+- Raises a `speech_recognition.RequestError` exception if the key isn’t valid, the quota for the key is maxed out, or there is no internet connection.
+
+
+
 
