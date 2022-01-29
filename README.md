@@ -17,13 +17,15 @@
 </div>
 
 ```py
-conda create -n venv python==3.8.5
+conda create -n ENV_NAME python==3.8.5
 
-conda activate venv
+conda activate ENV_NAME
 
 pip install -r requirements.txt
 
 pip install pipwin
 
 pipwin install pyaudio
+
+conda env remove -n ENV_NAME
 ```
