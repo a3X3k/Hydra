@@ -15,3 +15,15 @@
   
 
 </div>
+
+```py
+conda create -n venv python==3.8.5
+
+conda activate venv
+
+pip install -r requirements.txt
+
+pip install pipwin
+
+pipwin install pyaudio
+```
