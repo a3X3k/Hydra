@@ -10,7 +10,7 @@
 
 ## Open Apps
 
-```
+```py
 import os
 os.startfile("Path")
 ```
@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
 ## Open Command Prompt
 
-```
+```py
 import os
 os.system("start cmd") 
 ```
@@ -104,7 +104,7 @@ if c == 27:
 - The line `cap.release()` is important because it gracefully closes the webcam.
 - `destroyAllWindows()` destroy's all the windows. 
 
-```
+```py
 import cv2
 
 cap = cv2.VideoCapture(0)
