@@ -165,3 +165,70 @@ print("Host Name is:" + host)
 print("Computer IP Address is:" + IP)
 ```
 
+## Get Summary from Wikipedia
+
+- We will be using the **Wikipedia API** to retrieve data from Wikipedia. 
+- Data scraping has seen a rapid surge owing to the increasing use of data analytics and machine learning tools. 
+- The Internet is the single largest source of information, and therefore it is important to know how to fetch data from various sources. 
+- And with Wikipedia being one of the largest and most popular sources for information on the Internet, this is a natural place to start.
+- In order to extract data from Wikipedia, we must first install the Python Wikipedia library, which wraps the official Wikipedia API. 
+
+```py
+pip install wikipedia
+```
+
+- Once the installation is done, we can use the Wikipedia API in Python to extract information from Wikipedia. 
+- In order to call the methods of the Wikipedia module in Python, we need to import it using the `import` command.
+
+```py
+import wikipedia
+```
+
+- We can extract the summary of a Wikipedia article using the `summary()` method. 
+- The article for which the summary needs to be extracted is passed as a parameter to this method.
+
+```py
+print(wikipedia.summary(""))
+```
+
+- The whole summary will be printed in the output. 
+- We can customize the number of sentences in the summary text to be displayed by configuring the sentences argument of the method.
+
+```py
+print(wikipedia.summary("", sentences=2))
+```
+
+- `wikipedia.summary` will raise a **disambiguation error** if the page does not exist or the page is disambiguous.
+- So we have to specify most specifically to get the correct summary.
+
+## Launch a Web Browser
+
+- The `webbrowser` module is a convenient web browser controller. 
+- It provides a high-level interface that allows displaying Web-based documents to users. 
+- `webbrowser` can also be used as a CLI tool. 
+- It accepts a URL as the argument with the other optional parameters like, 
+  - -n Opens the URL in a new browser window
+  - -t Opens the URL in a new browser tab
+
+```py
+import webbrowser
+
+webbrowser.open('http://www.google.com')
+```
+
+- This opens the requested page using the default browser.
+
+```py
+webbrowser.open_new('http://www.google.com')
+```
+
+- This will try to open the page in a new browser window or tab, if possible and supported by the browser. 
+
+```py
+search = webbrowser.get('chrome')
+
+search.open('http://www.google.com')
+```
+
+-  To open a page in a specific browser, use the `webbrowser.get()` function to specify a particular browser.
+
