@@ -8,6 +8,13 @@
 
 </br>
 
+```
+import os
+os.startfile("Path")
+```
+
+- This opens any app installed in the system.
+
 ```py
 import pyttsx3
 import speech_recognition as sr
@@ -58,5 +65,5 @@ if __name__ == "__main__":
         
     if "open web browser" in query:
 
-        os.startfile("Browser.exe Path")
+        os.startfile("C:\\Program Files\\BraveSoftware\\Brave-Browser-Beta\\Application\\brave.exe")
 ```
