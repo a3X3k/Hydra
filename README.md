@@ -13,6 +13,8 @@
 | 3 | [Greeting Message](https://github.com/a3X3k/Hydra/blob/main/Greetings.md) |
 | 4 | [Tasks](https://github.com/a3X3k/Hydra/blob/main/Tasks.md) |
 
+  </div>
+  
 ```py
 conda create -n ENV_NAME python==3.8.5
 
@@ -26,6 +28,8 @@ pipwin install pyaudio
 
 conda env remove -n ENV_NAME
 ```
+
+<div align = "center">
 
 | Contributor | Features Added |
 | ---   | ----------- |
