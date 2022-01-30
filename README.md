@@ -12,9 +12,6 @@
 | 2 | [Speech Recognition](https://github.com/a3X3k/Hydra/blob/main/Speech%20Recognition.md) |
 | 3 | [Greeting Message](https://github.com/a3X3k/Hydra/blob/main/Greetings.md) |
 | 4 | [Tasks](https://github.com/a3X3k/Hydra/blob/main/Tasks.md) |
-  
-
-</div>
 
 ```py
 conda create -n ENV_NAME python==3.8.5
@@ -29,3 +26,12 @@ pipwin install pyaudio
 
 conda env remove -n ENV_NAME
 ```
+
+| Contributor | Features Added |
+| ---   | ----------- |
+| S Abhishek | Text To Speech, Speech Recognition, Greeting Message, Opening Files, Command Prompt, Camera, Play Music, Get IP Information, Get Summary from Wikipedia, Launching a Web Browser, Send a WhatsApp Message|
+
+  
+  
+  
+</div>
