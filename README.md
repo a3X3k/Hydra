@@ -15,6 +15,8 @@
 
   </div>
   
+  <br/>
+  
 ```py
 conda create -n ENV_NAME python==3.8.5
 
@@ -28,6 +30,8 @@ pipwin install pyaudio
 
 conda env remove -n ENV_NAME
 ```
+
+<br/>
 
 <div align = "center">
 
