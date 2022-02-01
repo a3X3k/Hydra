@@ -350,7 +350,7 @@ contents = ['Testing', 'Files are also attached', '<Full Path>']
 yag.send('receiver@outlook.com', 'Demo', contents)
 ```
 
-
+- In this **test** is actually the subject of the email while in contents, you can add the message and attachments (images, word document, audio file, etc).
 
 
 
