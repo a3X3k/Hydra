@@ -230,7 +230,7 @@ search = webbrowser.get('chrome')
 search.open('http://www.google.com')
 ```
 
--  To open a page in a specific browser, use the `webbrowser.get()` function to specify a particular browser.
+- To open a page in a specific browser, use the `webbrowser.get()` function to specify a particular browser.
 
 
 ## Send a WhatsApp Message
@@ -275,9 +275,7 @@ kit.playonyt("Song Name")
 - If you want to send mail using a website other than Gmail, you need to get the corresponding information.
 - To create a session, we will be using its instance SMTP to encapsulate an SMTP connection.
 
-> :warning: Before sending an email using this module, you need to change a setting in your email account. 
-> Indeed, you need to **enable access to less secure apps** in the email you will be using as the sender. 
-> More on this here: https://support.google.com/accounts/answer/6010255#zippy=%2Cif-less-secure-app-access-is-on-for-your-account
+> :warning: Before sending an email using this module, you need to [**enable access to less secure apps**](https://support.google.com/accounts/answer/6010255#zippy=%2Cif-less-secure-app-access-is-on-for-your-account) in the email you will be using as the sender. :warning:
 
 ```py
 s = smtplib.SMTP('smtp.gmail.com', 587)
