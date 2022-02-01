@@ -265,6 +265,121 @@ kit.sendwhatmsg("+91**", "Message", 18, 21)
 kit.playonyt("Song Name")
 ```
 
+## Send Email
+
+- Python, being a powerful language don’t need any external library to import and offers a native library to send emails `SMTP lib`.
+- This library is the most popular one when it comes to sending email with Python. 
+- `smtplib` creates a Simple Mail Transfer Protocol client session object which is used to send emails to any valid email id on the internet. 
+- Different websites use different port numbers.
+- Here we are using a Gmail account to send a mail and hence we are using the Port number **587**.
+- If you want to send mail using a website other than Gmail, you need to get the corresponding information.
+- To create a session, we will be using its instance SMTP to encapsulate an SMTP connection.
+
+<div class="note">       
+    **NOTE**: Source [here](//developer.run)
+</div>
+.note+p { /*next paragraph after <div class="note"></div>*/
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    border-radius: 4px;
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.note+p:before { /*aditionally prepend `⚠ Note:` to message: */ 
+    content: "⚠ Note:";
+    font-weight: bold;
+    display: block;
+}
+
+```py
+s = smtplib.SMTP('smtp.gmail.com', 587)
+```
+
+- In this, you need to pass the first parameter of the server location and the second parameter of the port to use. 
+- For Gmail, we use port number 587.
+- For security reasons, now put the SMTP connection in the TLS mode. 
+- TLS (Transport Layer Security) encrypts all the SMTP commands. 
+- After that, for security and authentication, you need to pass your Gmail account credentials in the login instance.
+- The compiler will show an authentication error if you enter invalid email id or password.
+- Store the message you need to send in a variable say, **message**. 
+- Using the `sendmail()` instance, send your message. 
+- `sendmail()` uses three parameters, 
+  - sender_email_id
+  - receiver_email_id and 
+  - message_to_be_sent 
+- The parameters need to be in the same sequence.
+- This will send the email from your account. 
+- After you have completed your task, terminate the **SMTP** session by using `quit()`.
+
+```py
+import smtplib
+
+s = smtplib.SMTP('smtp.gmail.com', 587)
+  
+s.starttls()
+  
+s.login("sender_email_id", "sender_email_id_password")
+
+message = "Message"
+  
+s.sendmail("sender_email_id", "receiver_email_id", message)
+
+s.quit()
+```
+
+- If you need to send the same message to different people, you can insert a **loop** between the initialization and termination of the SMTP session. 
+- Loop will initialize turn by turn and after sending the email, SMTP session will be terminated.
+
+```py
+import smtplib
+  
+list_of_email = ["xxxxx@gmail.com", "yyyyy@gmail.com"]
+  
+for dest in list_of_email:
+
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    
+    s.starttls()
+    
+    s.login("sender_email_id", "sender_email_id_password")
+    
+    message = "Message"
+    
+    s.sendmail("sender_email_id", dest, message)
+    
+    s.quit()
+```
+
+- This code can send simple mail which doesn’t have any attachment or any subject.
+- One of the most amazing things about this code is that we can send any number of emails using this and Gmail mostly put your mail in the primary section. 
+- Sent mails would not be detected as Spam generally.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
