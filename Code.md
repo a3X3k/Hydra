@@ -28,7 +28,7 @@ engine.setProperty('rate', 200)
 
 emails = {
 
-    "abhishek outlook": "abhishekabi2002@outlook.com",
+    "abhishek outlook": "sabhishek@am.students.amrita.edu",
 }
 
 def speak(audio):
