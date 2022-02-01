@@ -353,23 +353,54 @@ yag.send('receiver@outlook.com', 'Demo', contents)
 - In this **test** is actually the subject of the email while in contents, you can add the message and attachments (images, word document, audio file, etc).
 
 
+## Switch Windows
 
+- `PyGetWindow` is a simple, cross-platform module for obtaining GUI information on and controlling application's windows.
 
+```py
+pip install pygetwindow
+```
 
+- `PyGetWindow` has functions for obtaining Window objects from a place on the screen, from the window title, or just getting all windows.
+- Window objects can be **minimized/maximized/restored/activated/resized/moved/closed** and also have attributes for their current position, size, and state.
 
+```py
+a = gw.getAllTitles()
+```
 
+-  `getAllWindows()` Returns a list of Window objects for every visible window on the screen.
 
+```py
+a = [i for i in a if i]
+```
 
+- This removes all blank windows.
 
+```py
+[window.append(x) for x in a if x not in window]
+```
 
+- This removes all duplicate windows. 
 
+```py
+system_apps = ["Settings", "Microsoft Text Input Application", "Program Manager"]
+ 
+window = [i for i in window if i not in system_apps]
+```
 
+- In this `system_apps` is the list which contains all inbuilt system apps which are running in background.
+- Since they are not required, it can be removed from the list.
 
+> **Alt + Tab** lets you switch between open windows. Just press **Alt + Tab**, hold the **Alt** key down, and then keep pressing the **Tab** key to scroll through your open windows. Release the **Alt** key when you see an outline around the window you want.
 
+- `keyDown()` function is same as **Holding the Key**.
+- `press()` function is same as **Pressing the Key**.
+- `keyUp()` function is same as **Releasing the Key**.
 
+```py
+pyautogui.keyDown("alt")
 
+pyautogui.press("tab")
 
-
-
-
-
+pyautogui.keyUp("alt")
+```
