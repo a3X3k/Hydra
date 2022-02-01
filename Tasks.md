@@ -255,8 +255,15 @@ kit.sendwhatmsg("+91**", "Message", 18, 21)
 - This module follows the 24 hrs time format, hence the time 18:21 is 06:21 PM.
 - Also, you should provide atleast 4-5 minutes future time from the current time while running the script, because if you will set the time 1-2 minute from current time, then the module will give error.
 
+## Play Song on YouTube 
 
+- Function `pywhatkit.playonyt()`, opens the YouTube in your default program and plays the video you referenced in the capacity. 
+- In the event that you pass the point name as a boundary, it plays the arbitrary video on that subject. 
+- On passing the URL of the video as the boundary, it open that precise video. 
 
+```py
+kit.playonyt(<Song Name>)
+```
 
 
 
