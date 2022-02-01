@@ -275,7 +275,7 @@ kit.playonyt("Song Name")
 - If you want to send mail using a website other than Gmail, you need to get the corresponding information.
 - To create a session, we will be using its instance SMTP to encapsulate an SMTP connection.
 
-!! Consider this a warning.
+> :warning: **If you are using mobile browser**: Be very careful here!
 
 ```py
 s = smtplib.SMTP('smtp.gmail.com', 587)
