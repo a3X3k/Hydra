@@ -10,6 +10,7 @@ import random
 import socket
 import wikipedia
 import webbrowser
+import wolframalpha
 import pywhatkit as kit
 import smtplib
 import yagmail
@@ -30,6 +31,20 @@ emails = {
 
     "abhishek outlook": "abhishekabi2002@outlook.com",
 }
+
+def computational_intelligence(question):
+    try:
+        client = wolframalpha.Client(app_id)
+        answer = client.query(question)
+        answer = next(answer.results).text
+        print(answer)
+        return answer
+    except:
+        speak("Sorry sir I couldn't fetch your question's answer. Please try again ")
+        return None
+
+
+
 
 def speak(audio):
 
