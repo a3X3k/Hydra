@@ -47,7 +47,7 @@ pip3 freeze > requirements.txt
 
 | Contributor | Features Added |
 | ---   | ----------- |
-| S Abhishek | Text To Speech, Speech Recognition, Greeting Message, Opening Files, Opening Command Prompt, Opening Camera, Playing Music, Getting IP Information, Getting Summary from Wikipedia, Launching a Web Browser, Sending a WhatsApp Message, Playing YouTube Song|
+| S Abhishek | Text To Speech, Speech Recognition, Greeting Message, Opening Files, Opening Command Prompt, Opening Camera, Playing Music, Getting IP Information, Getting Summary from Wikipedia, Launching a Web Browser, Sending a WhatsApp Message, Playing YouTube Song, Sending Emails with and without attachments |
 | Harsha Sathish   |  |
 | Arvind Kumar K   | |
 | Kumar Anurag |  |
