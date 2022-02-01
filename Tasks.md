@@ -335,7 +335,6 @@ for dest in list_of_email:
 - This code can send simple mail which doesn’t have any attachment or any subject.
 - One of the most amazing things about this code is that we can send any number of emails using this and Gmail mostly put your mail in the primary section. 
 - Sent mails would not be detected as Spam generally.
-
 - **Yagmail** is a **GMAIL** client that aims at making it even more simple to send emails.
 - It is extremely easy to add things to the email (attachments, subject, links, etc) while it is not as straighforward when using **SMTPLIB**.
 
