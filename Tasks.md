@@ -262,7 +262,7 @@ kit.sendwhatmsg("+91**", "Message", 18, 21)
 - On passing the URL of the video as the boundary, it open that precise video. 
 
 ```py
-kit.playonyt(<Song Name>)
+kit.playonyt("Song Name")
 ```
 
 
