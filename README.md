@@ -37,7 +37,7 @@ conda env remove -n ENV_NAME
 
 | Contributor | Features Added |
 | ---   | ----------- |
-| S Abhishek | Text To Speech, Speech Recognition, Greeting Message, Opening Files, Opening Command Prompt, Opening Camera, Playing Music, Getting IP Information, Getting Summary from Wikipedia, Launching a Web Browser, Sending a WhatsApp Message|
+| S Abhishek | Text To Speech, Speech Recognition, Greeting Message, Opening Files, Opening Command Prompt, Opening Camera, Playing Music, Getting IP Information, Getting Summary from Wikipedia, Launching a Web Browser, Sending a WhatsApp Message, Playing YouTube Song|
 | Harsha Sathish   |  |
 | Arvind Kumar K   | |
 | Kumar Anurag |  |
