@@ -47,7 +47,7 @@ pip3 freeze > requirements.txt
 
 | Contributor | Features Added |
 | ---   | ----------- |
-| S Abhishek | <ul><li>Text To Speech</li><li>Speech Recognition</li><li>Greeting Message</li><li>Opening & Closing Notepad</li><li>Opening & Closing Command Prompt</li><li>Opening & Closing a Web Browser</li><li>Opening Camera</li><li>Playing Music</li><li>Playing Music</li><li>Getting IP Information</li><li>Getting Summary from Wikipedia</li><li>Sending a WhatsApp Message</li><li>Playing YouTube Song</li><li>Sending Emails with and without attachments</li></ul> |
+| S Abhishek | <ul><li>Text To Speech</li><li>Speech Recognition</li><li>Greeting Message</li><li>Launching & Closing Notepad</li><li>Launching & Closing Command Prompt</li><li>Launching & Closing a Web Browser</li><li>Launching Camera</li><li>Playing Music</li><li>Playing Music</li><li>Getting IP Information</li><li>Getting Summary from Wikipedia</li><li>Sending a WhatsApp Message</li><li>Playing YouTube Song</li><li>Sending Emails with and without attachments</li></ul> |
 | Harsha Sathish   |  |
 | Arvind Kumar K   | |
 | Kumar Anurag |  |
