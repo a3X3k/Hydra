@@ -1,4 +1,5 @@
 ```py
+from curses import window
 from email.message import Message
 import pyttsx3
 import speech_recognition as sr
@@ -12,6 +13,9 @@ import webbrowser
 import pywhatkit as kit
 import smtplib
 import yagmail
+import pyautogui
+import time
+import pygetwindow as gw
 
 engine = pyttsx3.init()
 
@@ -33,6 +37,7 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+
 def takecommand():
 
     r = sr.Recognizer()
@@ -52,7 +57,7 @@ def takecommand():
 
     except Exception as e:
 
-        speak("Say that again please")
+        speak("\nSay that again please")
         return "Nothing"
 
     except sr.UnknownValueError:
@@ -85,6 +90,199 @@ def wish():
         speak("Good Evening Sir")
 
 
+def Camera():
+
+    cap = cv2.VideoCapture(0)
+
+    if not cap.isOpened():
+                
+        raise IOError("Cannot open webcam")
+
+    while True:
+    
+        ret, frame = cap.read()
+    
+        frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
+    
+        cv2.imshow('Input', frame)
+
+        c = cv2.waitKey(1)
+
+        if c == 27:
+
+            break
+
+    cap.release()
+
+    cv2.destroyAllWindows()
+
+
+def Wikipedia():
+
+    speak("\nWhat do you want to search for in Wikipedia Sir?")
+
+    query = takecommand().lower()
+
+    if query != "nothing":
+
+        speak("\nSearching in Wikipedia")
+
+        summary = wikipedia.summary(query, sentences = 2)
+
+        speak("\nAccording to Wikipedia, " + summary)
+
+
+def YouTube_Songs():
+
+    speak("\nWhich song do you want me to play Sir?")
+
+    song = takecommand()
+
+    song = song.replace("play", "")
+
+    speak("\nHere you go....")
+
+    kit.playonyt(song)
+
+
+def Google_Search():
+
+    speak("\nWhat do I need to search on Google Sir?")
+
+    query = takecommand().lower()
+
+    if "tell me about" in query:
+
+        query = query.replace("tell me about", "")
+
+        print(query)
+
+        summary = wikipedia.summary(query, sentences = 2)
+
+        speak("\nAccording to Wikipedia, " + summary)
+
+    elif query != "nothing":
+                
+        speak("\nSearching on Google Sir")
+
+        query = query.replace("search for", "")
+
+        webbrowser.open("https://www.google.com/search?q=" + query)
+
+
+def Whatsapp():
+
+    speak("\nPlease tell the number to which you wish to message Sir")
+
+    num = takecommand()
+
+    num = "+91" + num
+
+    num = num.replace(" ", "")
+
+    speak("\nPlease tell your message Sir")
+
+    message = takecommand().lower()
+
+    speak("\nWhen do you want to send a message Sir? Please tell me some time after 4 minutes from now!")
+
+    speak("\nFor Example, you can tell as 5")
+
+    time = takecommand().lower()
+
+    hour = datetime.datetime.now().hour
+
+    minutes = datetime.datetime.now().minute
+
+    kit.sendwhatmsg(num, message, hour, minutes + int(time))
+
+
+def Email():
+
+    speak("\nTo whom do you want to send the mail Sir?")
+
+    Mail_ID = takecommand().lower()
+
+    if Mail_ID not in emails:
+
+        speak("\nSorry Sir! The Recipient's Mail ID is not there in the Database.")
+
+        speak("\nDo you want to add details to the Database Sir?")
+
+        if "yes" in takecommand().lower():
+
+            speak("\nPlease type the Recipient's Name Sir. Remember that the same name has to be used for future references.")
+
+            name = input()
+
+            speak("\nPlease type the Mail ID Sir.")
+
+            ID = input()
+
+            emails[name] = ID
+
+            speak("\nInformation has been updated Sir. Please try again to send the Email.")
+                
+    else:
+
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+
+        speak("\nWhat do you want to send Sir?")
+
+        Message = takecommand()
+
+        speak("\nDo you want to include any attachments Sir?")
+
+        if "yes" in takecommand().lower():
+
+            yag = yagmail.SMTP('x@gmail.com', 'xyz')
+
+            contents = [Message]
+
+            speak("\nPlease provide the full path of the attachment Sir and also make sure that you use the forward slash as a file separator and not the backward slash.")
+
+            path = input()
+
+            contents.append(path)
+
+            speak("\nWhat should be the Subject of the Mail Sir?")
+
+            subject = takecommand()
+
+            yag.send(emails[Mail_ID], subject, contents)
+
+            speak("\nMail has been sent successfully Sir!")
+
+            yag.quit()
+                
+        else:
+                    
+            server.login('x@gmail.com', 'xyz')
+
+            server.sendmail('x@gmail.com', emails[Mail_ID], Message)
+
+            speak("\nMail has been sent successfully Sir!")
+
+            server.quit()
+
+
+def Switch_Window():
+
+    a = gw.getAllTitles()
+
+    a = [i for i in a if i]
+
+    window = []
+
+    [window.append(x) for x in a if x not in window]
+
+    system_apps = ["Settings", "Microsoft Text Input Application", "Program Manager"]
+ 
+    window = [i for i in window if i not in system_apps]
+
+    return window
+
+
 if __name__ == "__main__":
 
     wish()
@@ -95,7 +293,11 @@ if __name__ == "__main__":
 
         query = takecommand().lower()
 
-       if "open notepad" in query:
+        if "nothing" in query:
+
+            continue
+
+        elif "open notepad" in query:
 
             os.system("start notepad.exe")
 
@@ -124,29 +326,7 @@ if __name__ == "__main__":
         
         elif "open camera" in query:
 
-            cap = cv2.VideoCapture(0)
-
-            if not cap.isOpened():
-                
-                raise IOError("Cannot open webcam")
-
-            while True:
-    
-                ret, frame = cap.read()
-    
-                frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
-    
-                cv2.imshow('Input', frame)
-
-                c = cv2.waitKey(1)
-
-                if c == 27:
-
-                    break
-
-            cap.release()
-
-            cv2.destroyAllWindows()
+            Camera()
 
         
         elif "play music" in query: 
@@ -171,17 +351,7 @@ if __name__ == "__main__":
         
         elif "wikipedia" in query:
 
-            speak("\nWhat do you want to search for in Wikipedia Sir?")
-
-            query = takecommand().lower()
-
-            if query != "nothing":
-
-                speak("\nSearching in Wikipedia")
-
-                summary = wikipedia.summary(query, sentences = 2)
-
-                speak("\nAccording to Wikipedia, " + summary)
+            wikipedia()
 
         
         elif "open youtube" in query:
@@ -228,137 +398,62 @@ if __name__ == "__main__":
         
         elif "search" and "google" in query:
 
-            speak("\nWhat do I need to search on Google Sir?")
-
-            query = takecommand().lower()
-
-            if "tell me about" in query:
-
-                query = query.replace("tell me about", "")
-
-                print(query)
-
-                summary = wikipedia.summary(query, sentences = 2)
-
-                speak("\nAccording to Wikipedia, " + summary)
-
-            elif query != "nothing":
-                
-                speak("\nSearching on Google Sir")
-
-                query = query.replace("search for", "")
-
-                webbrowser.open("https://www.google.com/search?q=" + query)
+            Google_Search()
 
 
         elif "whatsapp" in query:
 
-            speak("\nPlease tell the number to which you wish to message Sir")
-
-            num = takecommand()
-
-            num = "+91" + num
-
-            num = num.replace(" ", "")
-
-            speak("\nPlease tell your message Sir")
-
-            message = takecommand().lower()
-
-            speak("\nWhen do you want to send a message Sir? Please tell me some time after 4 minutes from now!")
-
-            speak("\nFor Example, you can tell as 5")
-
-            time = takecommand().lower()
-
-            hour = datetime.datetime.now().hour
-
-            minutes = datetime.datetime.now().minute
-
-            kit.sendwhatmsg(num, message, hour, minutes + int(time))
+            Whatsapp()
 
 
         elif "songs" and "youtube" in query:
 
-            speak("\nWhich song do you want me to play Sir?")
-
-            song = takecommand()
-
-            song = song.replace("play", "")
-
-            speak("\nHere you go....")
-
-            kit.playonyt(song)
+            YouTube_Songs()
 
         
         elif "send email" in query:
 
-            speak("\nTo whom do you want to send the mail Sir?")
+            Email()
 
-            Mail_ID = takecommand().lower()
+        
+        elif "switch" in query:
 
-            if Mail_ID not in emails:
+            window = Switch_Window()
 
-                speak("\nSorry Sir! The Recipient's Mail ID is not there in the Database.")
+            speak(f"\nThere are totally {len(window)} windows open Sir!")
 
-                speak("\nDo you want to add details to the Database Sir?")
+            k = 0
 
-                if "yes" in takecommand().lower():
+            for i in window:
 
-                    speak("\nPlease type the Recipient's Name Sir. Remember that the same name has to be used for future references.")
+                speak(f"\nWindow {k + 1} : {window[k]}") 
 
-                    name = input()
+                k += 1
 
-                    speak("\nPlease type the Mail ID Sir.")
+            speak("\nPlease tell the window name which you want me to Open Sir!")
 
-                    ID = input()
+            window_to_open = takecommand().lower()
 
-                    emails[name] = ID
+            win_num = 0
 
-                    speak("\nInformation has been updated Sir. Please try again to send the Email.")
-                
-            else:
+            window = Switch_Window()
 
-                server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            pyautogui.keyDown("alt")
 
-                speak("\nWhat do you want to send Sir?")
+            for i in range(len(window)):
 
-                Message = takecommand()
+                if window_to_open in window[i].lower():
 
-                speak("\nDo you want to include any attachments Sir?")
+                    break
 
-                if "yes" in takecommand().lower():
+                else: 
 
-                    yag = yagmail.SMTP('xxx@gmail.com', 'xyz')
+                    pyautogui.press("tab")
 
-                    contents = [Message]
+            time.sleep(1)
 
-                    speak("\nPlease provide the full path of the attachment Sir and also make sure that you use the forward slash as a file separator and not the backward slash.")
-
-                    path = input()
-
-                    contents.append(path)
-
-                    speak("\nWhat should be the Subject of the Mail Sir?")
-
-                    subject = takecommand()
-
-                    yag.send(emails[Mail_ID], subject, contents)
-
-                    speak("\nMail has been sent successfully Sir!")
-
-                    yag.quit()
-                
-                else:
-                    
-                    server.login('xxx@gmail.com', 'xyz')
-
-                    server.sendmail('abhishekabi2002@gmail.com', emails[Mail_ID], Message)
-
-                    speak("\nMail has been sent successfully Sir!")
-
-                    server.quit()
-
+            pyautogui.keyUp("alt")
+        
 
         elif "quit" in query:
 
@@ -374,5 +469,7 @@ if __name__ == "__main__":
 
                 continue
 
-```
+        else:
 
+            time.sleep(10)
+```
