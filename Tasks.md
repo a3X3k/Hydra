@@ -275,24 +275,7 @@ kit.playonyt("Song Name")
 - If you want to send mail using a website other than Gmail, you need to get the corresponding information.
 - To create a session, we will be using its instance SMTP to encapsulate an SMTP connection.
 
-<div class="note">       
-    **NOTE**: Source [here](//developer.run)
-</div>
-.note+p { /*next paragraph after <div class="note"></div>*/
-    padding: 8px 35px 8px 14px;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-    border-radius: 4px;
-    color: #3a87ad;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-}
-
-.note+p:before { /*aditionally prepend `⚠ Note:` to message: */ 
-    content: "⚠ Note:";
-    font-weight: bold;
-    display: block;
-}
+!! Consider this a warning.
 
 ```py
 s = smtplib.SMTP('smtp.gmail.com', 587)
