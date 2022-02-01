@@ -275,7 +275,7 @@ kit.playonyt("Song Name")
 - If you want to send mail using a website other than Gmail, you need to get the corresponding information.
 - To create a session, we will be using its instance SMTP to encapsulate an SMTP connection.
 
-> :warning: Before sending an email using this module, you need to [**enable access to less secure apps**](https://support.google.com/accounts/answer/6010255#zippy=%2Cif-less-secure-app-access-is-on-for-your-account) in the email you will be using as the sender. :warning:
+> :warning: Before sending an email using this module, you need to [**enable access to less secure apps**](https://support.google.com/accounts/answer/6010255#zippy=%2Cif-less-secure-app-access-is-on-for-your-account) in the email you will be using as the sender.
 
 ```py
 s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -300,17 +300,13 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 ```py
 import smtplib
 
-s = smtplib.SMTP('smtp.gmail.com', 587)
-  
-s.starttls()
-  
-s.login("sender_email_id", "sender_email_id_password")
+server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 
-message = "Message"
-  
-s.sendmail("sender_email_id", "receiver_email_id", message)
+server.login('youremail@gmail.com', 'Password')
 
-s.quit()
+server.sendmail('youremail@gmail.com','receiver_adress@outlook.com', 'Hello')
+
+server.quit()
 ```
 
 - If you need to send the same message to different people, you can insert a **loop** between the initialization and termination of the SMTP session. 
@@ -340,10 +336,18 @@ for dest in list_of_email:
 - One of the most amazing things about this code is that we can send any number of emails using this and Gmail mostly put your mail in the primary section. 
 - Sent mails would not be detected as Spam generally.
 
+- **Yagmail** is a **GMAIL** client that aims at making it even more simple to send emails.
+- It is extremely easy to add things to the email (attachments, subject, links, etc) while it is not as straighforward when using **SMTPLIB**.
 
+```py
+import yagmail
 
+yag = yagmail.SMTP('youremail@gmail.com', 'Password')
 
+contents = ['Testing', 'Files are also attached', '<Full Path>']
 
+yag.send('receiver@outlook.com', 'Demo', contents)
+```
 
 
 
