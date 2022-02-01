@@ -34,11 +34,8 @@ conda env remove -n ENV_NAME
 ```py
 pip freeze > requirements.txt  # Python3
 
-pip freeze > requirements.txt  # Python2
-
 conda list -e > requirements.txt
 
-pip freeze > requirements.txt
 ```
 
 <br/>
