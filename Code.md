@@ -95,19 +95,31 @@ if __name__ == "__main__":
 
         query = takecommand().lower()
 
-        if "open notepad" in query:
+       if "open notepad" in query:
 
-            os.startfile("C:\\Windows\\system32\\notepad.exe")
+            os.system("start notepad.exe")
+
+        elif "close notepad" in query:
+
+            os.system("taskkill /im notepad.exe /f")
 
 
         elif "open web browser" in query:
 
-            os.startfile("C:\\Program Files\\BraveSoftware\\Brave-Browser-Beta\\Application\\brave.exe")
+            os.system("start brave.exe")
+
+        elif "close web browser" in query:
+
+            os.system("taskkill /im brave.exe /f")
 
         
         elif "open command prompt" in query:
 
             os.system("start cmd") 
+
+        elif "close command prompt" in query:
+
+            os.system("taskkill /im cmd.exe /f")
 
         
         elif "open camera" in query:
