@@ -15,6 +15,8 @@ import smtplib
 import yagmail
 import pyautogui
 import time
+import requests
+import json
 import pygetwindow as gw
 
 engine = pyttsx3.init()
