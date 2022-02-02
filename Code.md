@@ -23,12 +23,12 @@ voices = engine.getProperty('voices')
 
 engine.setProperty('voice', voices[1].id)
 
-engine.setProperty('rate', 200)
+engine.setProperty('rate', 175)
 
 
 emails = {
 
-    "abhishek outlook": "sabhishek@am.students.amrita.edu",
+    "outlook": "abhishekabi2002@outlook.com",
 }
 
 def speak(audio):
@@ -57,7 +57,6 @@ def takecommand():
 
     except Exception as e:
 
-        speak("\nSay that again please")
         return "Nothing"
 
     except sr.UnknownValueError:
@@ -235,7 +234,7 @@ def Email():
 
         if "yes" in takecommand().lower():
 
-            yag = yagmail.SMTP('x@gmail.com', 'xyz')
+            yag = yagmail.SMTP('@gmail.com', '1')
 
             contents = [Message]
 
@@ -257,9 +256,9 @@ def Email():
                 
         else:
                     
-            server.login('x@gmail.com', 'xyz')
+            server.login('@gmail.com', '1')
 
-            server.sendmail('x@gmail.com', emails[Mail_ID], Message)
+            server.sendmail('@gmail.com', emails[Mail_ID], Message)
 
             speak("\nMail has been sent successfully Sir!")
 
@@ -281,6 +280,19 @@ def Switch_Window():
     window = [i for i in window if i not in system_apps]
 
     return window
+
+
+def Navigate():
+	
+    speak("\nWhere do you wish to navigate Sir?")
+	
+    query = takecommand().lower()
+	
+    query = query.replace("navigate to","")
+		
+    speak(f"Opening the Navigator to{query} Sir.")
+		
+    webbrowser.open('https://www.google.com/maps/place/' + query)
 
 
 if __name__ == "__main__":
@@ -453,6 +465,11 @@ if __name__ == "__main__":
             time.sleep(1)
 
             pyautogui.keyUp("alt")
+
+
+        elif "navigate" in query:
+
+            Navigate()
         
 
         elif "quit" in query:
@@ -468,8 +485,4 @@ if __name__ == "__main__":
             else:
 
                 continue
-
-        else:
-
-            time.sleep(10)
 ```
