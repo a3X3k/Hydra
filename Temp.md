@@ -40,5 +40,18 @@ def makemytrip():
             print("redirecting to live train status page")
 
             webbrowser.open("https://www.makemytrip.com/railways/liveStatus/")
+
+    elif query == "bus":
+
+        print("Redirecting to Bus Booking")
+
+        webbrowser.open("https://www.makemytrip.com/bus-tickets/")
+        
+        
+    elif query == "flight":
+
+        print("redirecting to Flight Booking")
+
+        webbrowser.open("https://www.makemytrip.com/flights/")
            
 ```
