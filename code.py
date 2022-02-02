@@ -183,6 +183,22 @@ def Navigate():
 		webbrowser.open('https://www.google.com/maps/place/' + query)
 
 
+<<<<<<< Updated upstream
+=======
+def Prime():
+    speak("Which movie do you wish to watch Sir?")
+
+    query = takecommand().lower()
+    query.replace(" ","+")
+    print("Ok Sir, Opening Prime Video and Searching for",query)
+    webbrowser.open("https://www.primevideo.com/search/ref=atv_nb_sr?phrase="+query+"&ie=UTF8")
+    
+
+
+    
+
+
+>>>>>>> Stashed changes
 
 def Whatsapp():
 
@@ -297,7 +313,11 @@ def Switch_Window():
     return window
 
 
+<<<<<<< Updated upstream
 if __name__ == "__main__":
+=======
+if _name_ == "_main_":
+>>>>>>> Stashed changes
 
     wish()
 
@@ -471,6 +491,15 @@ if __name__ == "__main__":
         elif "navigate" in query:
             Navigate()
 
+<<<<<<< Updated upstream
+=======
+        elif "open" and "netflix" in query:
+            Netflix()
+        
+        elif "open" and "prime" in query:
+            Prime()
+
+>>>>>>> Stashed changes
         elif "quit" in query:
 
             speak("\nDo you really wanna quit Sir?")
@@ -489,4 +518,7 @@ if __name__ == "__main__":
         else:
 
             time.sleep(10)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
