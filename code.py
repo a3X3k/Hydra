@@ -1,4 +1,3 @@
-```py
 from curses import window
 from email.message import Message
 import pyttsx3
@@ -28,7 +27,7 @@ engine.setProperty('rate', 200)
 
 emails = {
 
-    "abhishek outlook": "sabhishek@am.students.amrita.edu",
+    "harsha's outlook": "harshasathish@am.students.amrita.edu",
 }
 
 def speak(audio):
@@ -168,6 +167,21 @@ def Google_Search():
         query = query.replace("search for", "")
 
         webbrowser.open("https://www.google.com/search?q=" + query)
+
+def Navigate():
+	
+	speak("\nWhere do you wish to navigate to Sir?")
+	
+	query = takecommand().lower()
+	
+	if "navigate to" in query:
+		
+		query.replace("navigate to","")
+		
+		print("Navigating from current location to",query)
+		
+		webbrowser.open('https://www.google.com/maps/place/' + query)
+
 
 
 def Whatsapp():
@@ -453,7 +467,9 @@ if __name__ == "__main__":
             time.sleep(1)
 
             pyautogui.keyUp("alt")
-        
+
+        elif "navigate" in query:
+            Navigate()
 
         elif "quit" in query:
 
@@ -468,8 +484,9 @@ if __name__ == "__main__":
             else:
 
                 continue
+        
 
         else:
 
             time.sleep(10)
-```
+
