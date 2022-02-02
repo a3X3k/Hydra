@@ -45,7 +45,7 @@ conda list -e > requirements.txt
 | Contributor | Features Added |
 | ---   | ----------- |
 | S Abhishek | <ul><li>Text To Speech</li><li>Speech Recognition</li><li>Greeting Message</li><li>Launching & Closing Notepad</li><li>Launching & Closing Command Prompt</li><li>Launching & Closing a Web Browser</li><li>Launching Camera</li><li>Playing Music</li><li>Getting IP Information</li><li>Getting Summary from Wikipedia</li><li>Sending a WhatsApp Message</li><li>Playing YouTube Song</li><li>Sending Emails with and without attachments</li><li>Switching Windows</li></ul> |
-  | Harsha Sathish   | <ul><li>Navigating using Google Maps</li></ul> |
+  | Harsha Sathish   | <ul><li>Navigating using Google Maps</li><li>Open any Movie from Amazon Prime</li></ul> |
 | Arvind Kumar K   | |
 | Kumar Anurag |  |
   
