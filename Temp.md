@@ -164,4 +164,16 @@ def hotel():
    
    elif "open atom" in query:
             os.system("start atom")
+            
+     __________________________________________________
+     
+    def movie():
+
+    speak("Where Would You like to Watch Movie ")
+
+    query3 = takecommand().lower()
+
+    speak("Enjoy Your Movie")
+
+    webbrowser.open("https://in.bookmyshow.com/explore/home/"+query3)
 ```
