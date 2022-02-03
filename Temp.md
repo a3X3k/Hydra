@@ -116,6 +116,20 @@ def Discord():
         'authorization': 'NzU0MDQ1MTkwOTI2MzY4ODQ4.YYDTig.4HIzVR5OHwqH0l4YWRI8q7GEEWY'
     }
     r = requests.post("https://discord.com/api/v9/channels/938752936232763404/messages", data=payload,headers = header)
+    
+  #_____________________________________________________________python______________________________________________________
+
+def piii():
+    
+    cmd = 'python PYTHONFILE_NAME'
+    
+    p = subprocess.Popen(cmd,shell=True) #install subprocess library (conda install -c omnia subprocess32)
+
+    out,error = p.communicate()
+
+    print(error)
+
+    print(out)
 
 
 #_______________________________________________________Hotel Booking___________________________________________________________
