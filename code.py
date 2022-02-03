@@ -4,6 +4,7 @@ import pyttsx3
 import speech_recognition as sr
 import datetime
 import os
+import requests
 import cv2
 import random
 import socket
@@ -182,9 +183,6 @@ def Navigate():
 		
 		webbrowser.open('https://www.google.com/maps/place/' + query)
 
-
-<<<<<<< Updated upstream
-=======
 def Prime():
     speak("Which movie do you wish to watch Sir?")
 
@@ -192,13 +190,19 @@ def Prime():
     query.replace(" ","+")
     print("Ok Sir, Opening Prime Video and Searching for",query)
     webbrowser.open("https://www.primevideo.com/search/ref=atv_nb_sr?phrase="+query+"&ie=UTF8")
-    
 
+def Discord():
+    #https://discord.com/api/v9/channels/938752936232763404/messages
+    query = takecommand().lower()
+    payload =  {
+        "content" : query
+    }
 
-    
+    header = {
+        'authorization': 'NzU0MDQ1MTkwOTI2MzY4ODQ4.YYDTig.4HIzVR5OHwqH0l4YWRI8q7GEEWY'
+    }
+    r = requests.post("https://discord.com/api/v9/channels/938752936232763404/messages", data=payload,headers = header)
 
-
->>>>>>> Stashed changes
 
 def Whatsapp():
 
@@ -312,12 +316,7 @@ def Switch_Window():
 
     return window
 
-
-<<<<<<< Updated upstream
 if __name__ == "__main__":
-=======
-if _name_ == "_main_":
->>>>>>> Stashed changes
 
     wish()
 
@@ -449,6 +448,9 @@ if _name_ == "_main_":
 
             Email()
 
+        elif "message" in query:
+            Discord()
+
         
         elif "switch" in query:
 
@@ -491,15 +493,13 @@ if _name_ == "_main_":
         elif "navigate" in query:
             Navigate()
 
-<<<<<<< Updated upstream
-=======
+
         elif "open" and "netflix" in query:
             Netflix()
         
         elif "open" and "prime" in query:
             Prime()
 
->>>>>>> Stashed changes
         elif "quit" in query:
 
             speak("\nDo you really wanna quit Sir?")
@@ -518,7 +518,5 @@ if _name_ == "_main_":
         else:
 
             time.sleep(10)
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+
