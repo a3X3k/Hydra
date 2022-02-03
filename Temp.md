@@ -120,10 +120,12 @@ def Discord(): #conda install -c anaconda requests install before running
   #_____________________________________________________________python______________________________________________________
 
 def piii():
+
+    query = takecommand().lower()
     
-    cmd = 'python PYTHONFILE_NAME'
+    cmd = 'python '+query+'.py'
     
-    p = subprocess.Popen(cmd,shell=True) #install subprocess library (conda install -c omnia subprocess32)
+    p = subprocess.Popen(cmd,shell=True)
 
     out,error = p.communicate()
 
