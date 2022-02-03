@@ -176,4 +176,28 @@ def hotel():
     speak("Enjoy Your Movie")
 
     webbrowser.open("https://in.bookmyshow.com/explore/home/"+query3)
+    
+    
+#_________________________________________________________ONLINE FOOD______________________________________________________
+
+def food():
+
+    speak("Would You Like To Order In Zomato Or swiggy")
+
+    query = takecommand().lower()
+
+    if "zomato" in query:
+
+        speak("Where do you live")
+
+        place = takecommand().lower()
+
+        webbrowser.open("https://www.zomato.com/"+place+"/order-food-online")
+
+    elif "swiggy" in query:
+
+        webbrowser.open("https://www.swiggy.com/restaurants")
+     
+#________________________________________________________________________________________________________________________     
+     
 ```
