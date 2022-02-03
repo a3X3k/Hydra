@@ -78,5 +78,63 @@ def time():
         print(e)
         time = False
     return time
+    
+    
+#______________________________________________________________CAB______________________________________________________________
+
+
+def Cab():
+    
+    speak("Sir would You like to book ola or uber")
+
+    query = takecommand().lower()
+
+    if "ola" in query:
+
+        speak("You have choosed ola sir")
+
+        webbrowser.open("https://book.olacabs.com/")
+
+    elif "uber" in query:
+
+        speak("You have choosed uber sir")
+
+        webbrowser.open("https://www.uber.com/in/en/")
+
+
+
+#_______________________________________________________________________________________________________________________________
+
+
+
+#_______________________________________________________Hotel Booking___________________________________________________________
+
+
+
+def hotel():
+    
+    speak("would You Like to Book Hotels In India or International")
+
+    query = takecommand().lower()
+
+    if query == "india":
+
+        speak("where do you wish to travel")
+
+        destt = takecommand().lower()
+
+        webbrowser.open("https://www.goibibo.com/hotels/hotels-in-"+destt+"-ct/")
+
+    elif query == "international":
+
+        speak("where do you wish to travel")
+
+        dest1 = takecommand().lower()
+
+        webbrowser.open("https://www.goibibo.com/hotels-international/hotels-in-"+dest1+"-ct/")
+        
+#______________________________________________________________________________________________________________________________
+
+
            
 ```
