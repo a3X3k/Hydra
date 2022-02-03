@@ -198,6 +198,16 @@ def food():
 
         webbrowser.open("https://www.swiggy.com/restaurants")
      
-#________________________________________________________________________________________________________________________     
+#__________________________________________________________AMAZON__________________________________________________________
+
+def amazon():
+
+    speak("What would You Like To order From Amazon")
+
+    query = takecommand().lower()
+
+    speak("you have searched "+query)
+
+    webbrowser.open("https://www.amazon.in/"+query)     
      
 ```
