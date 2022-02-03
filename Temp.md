@@ -105,7 +105,7 @@ def Cab():
 
 #____________________Send Messages on Discord Server___________________________________________________________________________________________________________
 
-def Discord():
+def Discord(): #conda install -c anaconda requests install before running
     #https://discord.com/api/v9/channels/938752936232763404/messages
     query = takecommand().lower()
     payload =  {
