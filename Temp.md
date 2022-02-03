@@ -135,6 +135,33 @@ def hotel():
         
 #______________________________________________________________________________________________________________________________
 
+        # __________________OTT PLATFORMS_____________________
+        
+        elif "open" and "netflix" in query:
 
-           
+            speak("\nOpening Netflix Sir...")
+
+            webbrowser.open("www.Netflix.com")
+            
+
+        elif "open primevidio" in query:
+
+            speak("\nOpening Amazon Prime Vidio Sir...")
+
+            webbrowser.open("www.primevidio.com")
+            
+
+        elif "open" and "hotstar" in query:
+
+            speak("\nOpening Disney Plus Hotstar Sir...")
+
+            webbrowser.open("www.Hotstar.com")
+            
+
+        
+      
+    #______________________________________________________
+   
+   elif "open atom" in query:
+            os.system("start atom")
 ```
