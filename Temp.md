@@ -1,12 +1,4 @@
 ```py
-def Prime():
-    speak("Which movie do you wish to watch Sir?")
-
-    query = takecommand().lower()
-    query.replace(" ","+")
-    print("Ok Sir, Opening Prime Video and Searching for",query)
-    webbrowser.open("https://www.primevideo.com/search/ref=atv_nb_sr?phrase="+query+"&ie=UTF8")
-
 def makemytrip():
     
     speak("Train, bus or flight")
@@ -136,30 +128,6 @@ def hotel():
         
 #______________________________________________________________________________________________________________________________
 
-        # __________________OTT PLATFORMS_____________________
-        
-        elif "open" and "netflix" in query:
-
-            speak("\nOpening Netflix Sir...")
-
-            webbrowser.open("www.Netflix.com")
-            
-
-        elif "open primevidio" in query:
-
-            speak("\nOpening Amazon Prime Vidio Sir...")
-
-            webbrowser.open("www.primevidio.com")
-            
-
-        elif "open" and "hotstar" in query:
-
-            speak("\nOpening Disney Plus Hotstar Sir...")
-
-            webbrowser.open("www.Hotstar.com")
-     
-     _____________________________________________
-     
     def movie():
 
     speak("Where Would You like to Watch Movie ")
@@ -169,7 +137,6 @@ def hotel():
     speak("Enjoy Your Movie")
 
     webbrowser.open("https://in.bookmyshow.com/explore/home/"+query3)
-    
     
 #_________________________________________________________ONLINE FOOD______________________________________________________
 
