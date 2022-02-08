@@ -157,16 +157,8 @@ def hotel():
             speak("\nOpening Disney Plus Hotstar Sir...")
 
             webbrowser.open("www.Hotstar.com")
-            
-
-        
-      
-    #______________________________________________________
-   
-   elif "open atom" in query:
-            os.system("start atom")
-            
-     __________________________________________________
+     
+     _____________________________________________
      
     def movie():
 
