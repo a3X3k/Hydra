@@ -407,12 +407,12 @@ pyautogui.keyUp("alt")
 
 ## Reservationo of tickets for Bus, Train, Flight, Cab, Food
 
-```py
+```bash
 Bus Reservation - webbrowser.open("https://www.makemytrip.com/bus-tickets/")
 
 Train Reservation - webbrowser.open("https://www.makemytrip.com/railways/")
             
-PNR Status - webbrowser.open("https://www.confirmtkt.com/pnr-status/")
+PNR Status - webbrowser.open("https://www.confirmtkt.com/pnr-status/" + <PNR Number> + "?")
 
 Live Train Status - webbrowser.open("https://www.makemytrip.com/railways/liveStatus/")
 
@@ -422,7 +422,7 @@ Ola Cab - webbrowser.open("https://book.olacabs.com/")
 
 Uber Cab - webbrowser.open("https://www.uber.com/in/en/")
 
-Zomato - webbrowser.open("https://www.zomato.com/%22+place+%22/order-food-online")
+Zomato - webbrowser.open("https://www.zomato.com/" + <Place> + "/order-food-online")
 
 Swiggy - webbrowser.open("https://www.swiggy.com/restaurants")
 
