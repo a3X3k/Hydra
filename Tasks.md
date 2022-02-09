@@ -409,6 +409,7 @@ pyautogui.keyUp("alt")
 - We can book Train, Bus or Flight tickets using MakeMyTrip.
 - First, the User specifies which mode of transport he prefers. 
 - If the choice is train, the user can choose whether he needs to book a ticket, check PNR status or to check the Live Train Status
+- If the User selects PNR Status, the Chatbot will ask for the PNR Number, and it re-directs to the particular PNR Status Page
 - The command prompt will open the website based on the User's choice
 - If the choice is bus, the User will be re-directed to the Bus Booking Page
 - If the choice is Flight, the User will be re-directed to the Flight Booking Page
@@ -462,3 +463,27 @@ def makemytrip():
 
         webbrowser.open("https://www.makemytrip.com/flights/%22)
 ```
+### Booking Cab
+- The User can book Cabs from our Chatbot by specifying which aggregator he prefers
+- The User has a choice between Ola and Uber
+- Depending on the choice, the User is redirected to the respective pages
+
+```py
+def Cab():
+
+    speak("Sir would You like to book ola or uber")
+
+    query = takecommand().lower()
+
+    if "ola" in query:
+
+        speak("You have choosed ola sir")
+
+        webbrowser.open("https://book.olacabs.com/%22)
+
+    elif "uber" in query:
+
+        speak("You have choosed uber sir")
+
+        webbrowser.open("https://www.uber.com/in/en/%22)
+ ```
