@@ -515,3 +515,7 @@ def hotel():
 
         webbrowser.open("https://www.goibibo.com/hotels-international/hotels-in-%22+dest1+%22-ct/%22)
 ```
+### Ordering Food
+- The User can select if he likes to order from Swiggy or Zomato
+- The User then selects the place to which he needs the food to be delivered
+- According to the choices, the User is re-directed to the webpages
