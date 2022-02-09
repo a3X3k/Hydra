@@ -538,3 +538,18 @@ def food():
 
         webbrowser.open("https://www.swiggy.com/restaurants%22)
 ```
+
+### Order through Amazon
+- The User is asked which material he requires through Amazon
+- The User is then re-directed to the requested webpage
+```py
+def amazon():
+
+    speak("What would You Like To order From Amazon")
+
+    query = takecommand().lower()
+
+    speak("you have searched "+query)
+
+    webbrowser.open("https://www.amazon.in/%22+query)
+```
