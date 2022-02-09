@@ -553,3 +553,15 @@ def amazon():
 
     webbrowser.open("https://www.amazon.in/%22+query)
 ```
+
+## Running Python Scripts
+- Using Chatbot, we are able to open python scripts present in our System. We implement this feature using SubProcess Module
+- The Subprocess Module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
+- The User tells the Bot which Python Script to run
+- The query stores the file name and the cmd variable stores the file name as present in the system
+- Python subprocess Popen is used to execute a child program in a new process. We can use it to run some shell commands
+- Popen creates a pipe between the calling program and the executed command, and returns a pointer to a stream that can be used to either read from or write to the pipe.
+- communicate() used to read input and the output forom the process itself.
+- communicate() returns a tuple (stdout_data, stderr_data)
+- The data will be strings if streams were opened in text mode; otherwise, bytes.
+- The Chatbot prints the Output and the Errors if any
