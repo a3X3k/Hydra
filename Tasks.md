@@ -519,3 +519,22 @@ def hotel():
 - The User can select if he likes to order from Swiggy or Zomato
 - The User then selects the place to which he needs the food to be delivered
 - According to the choices, the User is re-directed to the webpages
+```py
+def food():
+
+    speak("Would You Like To Order In Zomato Or swiggy")
+
+    query = takecommand().lower()
+
+    if "zomato" in query:
+
+        speak("Where do you live")
+
+        place = takecommand().lower()
+
+        webbrowser.open("https://www.zomato.com/%22+place+%22/order-food-online%22)
+
+    elif "swiggy" in query:
+
+        webbrowser.open("https://www.swiggy.com/restaurants%22)
+```
