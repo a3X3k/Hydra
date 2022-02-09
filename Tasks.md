@@ -404,3 +404,61 @@ pyautogui.press("tab")
 
 pyautogui.keyUp("alt")
 ```
+
+## Booking tickets for Train, Flight and Bus
+- We can book Train, Bus or Flight tickets using MakeMyTrip.
+- First, the User specifies which mode of transport he prefers. 
+- If the choice is train, the user can choose whether he needs to book a ticket, check PNR status or to check the Live Train Status
+- The command prompt will open the website based on the User's choice
+- If the choice is bus, the User will be re-directed to the Bus Booking Page
+- If the choice is Flight, the User will be re-directed to the Flight Booking Page
+
+```py
+
+def makemytrip():
+
+    speak("Train, bus or flight")
+
+    query = takecommand().lower()
+
+    if query == "train":
+
+        speak("book train ticket or check pnr status or check live train status")
+
+        query1= takecommand().lower()
+
+        if "book" or "ticket" in query1:
+
+            print("Redirecting to Booking Page")
+
+            webbrowser.open("https://www.makemytrip.com/railways/%22)
+
+        elif "pnr" in query1:
+
+            speak("What is Your Pnr number")
+
+            no = takecommand()
+
+            print("Redirecting to pnr status page")
+
+            webbrowser.open("https://www.makemytrip.com/railways/pnrsearch/?pnr=%22+no)
+
+        else:
+
+            print("redirecting to live train status page")
+
+            webbrowser.open("https://www.makemytrip.com/railways/liveStatus/%22)
+
+    elif query == "bus":
+
+        print("Redirecting to Bus Booking")
+
+        webbrowser.open("https://www.makemytrip.com/bus-tickets/%22)
+
+
+    elif query == "flight":
+
+        print("redirecting to Flight Booking")
+
+        webbrowser.open("https://www.makemytrip.com/flights/%22)
+```
