@@ -30,8 +30,75 @@ emails = {
 
     "abhishek outlook": "abhishekabi2002@outlook.com",
     "abhishek gmail": "shek1harley@gmail.com",
-
 }
+
+def Email():
+
+    speak("\nTo whom do you want to send the mail Sir?")
+
+    Mail_ID = takecommand().lower()
+
+    if Mail_ID not in emails:
+
+        speak("\nSorry Sir! The Recipient's Mail ID is not there in the Database.")
+
+        speak("\nDo you want to add details to the Database Sir?")
+
+        if "yes" in takecommand().lower():
+
+            speak("\nPlease type the Recipient's Name Sir. Remember that the same name has to be used for future references.")
+
+            name = input()
+
+            speak("\nPlease type the Mail ID Sir.")
+
+            ID = input()
+
+            emails[name] = ID
+
+            speak("\nInformation has been updated Sir. Please try again to send the Email.")
+                
+    else:
+
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+
+        speak("\nWhat do you want to send Sir?")
+
+        Message = takecommand()
+
+        speak("\nDo you want to include any attachments Sir?")
+
+        if "yes" in takecommand().lower():
+
+            yag = yagmail.SMTP('@gmail.com', '')
+
+            contents = [Message]
+
+            speak("\nPlease provide the full path of the attachment Sir and also make sure that you use the forward slash as a file separator and not the backward slash.")
+
+            path = input()
+
+            contents.append(path)
+
+            speak("\nWhat should be the Subject of the Mail Sir?")
+
+            subject = takecommand()
+
+            yag.send(emails[Mail_ID], subject, contents)
+
+            speak("\nMail has been sent successfully Sir!")
+
+            yag.quit()
+                
+        else:
+                    
+            server.login('@gmail.com', '')
+
+            server.sendmail('@gmail.com', emails[Mail_ID], Message)
+
+            speak("\nMail has been sent successfully Sir!")
+
+            server.quit()
 
 def speak(audio):
 
@@ -160,6 +227,10 @@ def Wikipedia():
 
         speak("\nAccording to Wikipedia, " + summary)
 
+    else:
+
+        speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+
 
 def YouTube_Songs():
 
@@ -198,6 +269,10 @@ def Google_Search():
 
         webbrowser.open("https://www.google.com/search?q=" + query)
 
+    else:
+
+        speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+
 
 def Whatsapp():
 
@@ -224,75 +299,6 @@ def Whatsapp():
     minutes = datetime.datetime.now().minute
 
     kit.sendwhatmsg(num, message, hour, minutes + int(time))
-
-
-def Email():
-
-    speak("\nTo whom do you want to send the mail Sir?")
-
-    Mail_ID = takecommand().lower()
-
-    if Mail_ID not in emails:
-
-        speak("\nSorry Sir! The Recipient's Mail ID is not there in the Database.")
-
-        speak("\nDo you want to add details to the Database Sir?")
-
-        if "yes" in takecommand().lower():
-
-            speak("\nPlease type the Recipient's Name Sir. Remember that the same name has to be used for future references.")
-
-            name = input()
-
-            speak("\nPlease type the Mail ID Sir.")
-
-            ID = input()
-
-            emails[name] = ID
-
-            speak("\nInformation has been updated Sir. Please try again to send the Email.")
-                
-    else:
-
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-
-        speak("\nWhat do you want to send Sir?")
-
-        Message = takecommand()
-
-        speak("\nDo you want to include any attachments Sir?")
-
-        if "yes" in takecommand().lower():
-
-            yag = yagmail.SMTP('@gmail.com', '')
-
-            contents = [Message]
-
-            speak("\nPlease provide the full path of the attachment Sir and also make sure that you use the forward slash as a file separator and not the backward slash.")
-
-            path = input()
-
-            contents.append(path)
-
-            speak("\nWhat should be the Subject of the Mail Sir?")
-
-            subject = takecommand()
-
-            yag.send(emails[Mail_ID], subject, contents)
-
-            speak("\nMail has been sent successfully Sir!")
-
-            yag.quit()
-                
-        else:
-                    
-            server.login('@gmail.com', '')
-
-            server.sendmail('@gmail.com', emails[Mail_ID], Message)
-
-            speak("\nMail has been sent successfully Sir!")
-
-            server.quit()
 
 
 def Switch_Window():
@@ -348,6 +354,165 @@ def Play_Movie():
         speak("\nOpening Hotstar...")
 
         webbrowser.open("https://www.hotstar.com/in")
+    
+    else:
+
+        speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+
+
+def Amazon():
+
+    speak("\nOpening Amazon Sir...")
+
+    webbrowser.open("https://www.amazon.in/") 
+
+
+def Food():
+
+    speak("\nWhere would you like to order Sir? Zomato or Swiggy. Don't forget to make sure that food delivery is available in your area.")
+
+    query = takecommand().lower()
+
+    if "zomato" in query:
+
+        speak("\nWhere do you live Sir?")
+
+        place = takecommand().lower()
+
+        speak(f"\nSearching for restaurants in {place} Sir...")
+
+        webbrowser.open("https://www.zomato.com/"+ place +"/order-food-online")
+
+    elif "swiggy" in query:
+
+        speak("\nSearching for restaurants Sir...")
+
+        webbrowser.open("https://www.swiggy.com/restaurants")
+
+    else:
+
+        speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+
+
+def Book_Movie():
+
+    speak("\nWhich city are you in Sir? Kindly Make sure that Book My Show is available in your City!")
+
+    query = takecommand().lower()
+
+    speak(f"\nSearching for movies in {query} Sir. Enjoy Your Movie... Have fun...")
+
+    webbrowser.open("https://in.bookmyshow.com/explore/home/"+ query)
+
+
+def Plan_My_Trip():
+    
+    speak("\nAlright... What do you want me to look for Sir? Cab, Hotels, Bus, Train or Flight?")
+
+    query = takecommand().lower()
+
+    if "cab" in query:
+        
+        speak("\nOla or Uber Sir?")
+
+        query = takecommand().lower()
+
+        if "ola" in query:
+
+            speak("\nRedirecting you to Ola Booking Page... Have a safe Journey Sir...")
+
+            webbrowser.open("https://book.olacabs.com/")
+
+        elif "uber" in query:
+
+            speak("\nRedirecting you to Uber Booking Page... Have a safe Journey Sir...")
+
+            webbrowser.open("https://www.uber.com/in/en/")
+        
+        else:
+
+            speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+
+    elif "train" in query:
+        
+        speak("\nDo you want me to Check PNR status or Check Live train status or Book Train ticket Sir?")
+        
+        query = takecommand().lower()
+
+        if "book" in query:
+            
+            speak("\nRedirecting you to Train Booking Page... Have a safe Journey Sir...")
+
+            webbrowser.open("https://www.makemytrip.com/railways/")
+            
+        elif "pnr" in query:
+
+            speak("\nWhat is your PNR Number Sir?")
+
+            query = takecommand()
+            
+            speak("\nRedirecting you to PNR Status Page Sir...")
+
+            query = query.replace(" ", "")
+
+            webbrowser.open("https://www.confirmtkt.com/pnr-status/"+ query + "?")
+
+        elif "live" in query:
+
+            speak("\nRedirecting you to Live Train Status Page Sir...")
+
+            webbrowser.open("https://www.makemytrip.com/railways/liveStatus/")
+
+        else:
+
+            speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+            
+    elif query == "bus":
+
+        speak("\nRedirecting you to Bus Booking Page... Have a safe Journey Sir...")
+
+        webbrowser.open("https://www.makemytrip.com/bus-tickets/")
+        
+        
+    elif query == "flight":
+
+        speak("\nRedirecting you to Flight Booking Page... Have a safe Journey Sir...")
+
+        webbrowser.open("https://www.makemytrip.com/flights/")
+
+    elif "hotel" in query:
+
+        speak("\nDo you want me to look for Indian Hotels or International Hotels Sir?")
+
+        query = takecommand().lower()
+
+        if "india" in query :
+
+            speak("\nTell me the place where you want me to look for hotels Sir!")
+
+            query = takecommand().lower()
+
+            speak("\nRedirecting you to Booking Page Sir...")
+
+            webbrowser.open("https://www.goibibo.com/hotels/hotels-in-" + query + "-ct/")
+
+        elif "international" in query:
+
+            speak("\nTell me the place where you want me to look for hotels Sir!")
+
+            query = takecommand().lower()
+
+            speak("\nRedirecting you to Booking Page Sir...")
+
+            webbrowser.open("https://www.goibibo.com/hotels-international/hotels-in-" + query + "-ct/")
+
+        else:
+
+            speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
+
+    else:
+
+        speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
 
 
 
@@ -693,6 +858,26 @@ if __name__ == "__main__":
             Play_Movie()
 
 
+        elif "amazon" in query:
+
+            Amazon()
+
+        
+        elif "food" in query:
+
+            Food()
+
+        
+        elif "book" and "movie" in query:
+
+            Book_Movie()
+
+
+        elif "plan my trip" in query:
+
+            Plan_My_Trip()
+
+        
         elif "quit" in query:
 
             speak("\nDo you really wanna quit Sir?")
