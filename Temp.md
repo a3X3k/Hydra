@@ -1,12 +1,4 @@
 ```py
-def Prime():
-    speak("Which movie do you wish to watch Sir?")
-
-    query = takecommand().lower()
-    query.replace(" ","+")
-    print("Ok Sir, Opening Prime Video and Searching for",query)
-    webbrowser.open("https://www.primevideo.com/search/ref=atv_nb_sr?phrase="+query+"&ie=UTF8")
-
 def makemytrip():
     
     speak("Train, bus or flight")
@@ -53,32 +45,6 @@ def makemytrip():
         print("redirecting to Flight Booking")
 
         webbrowser.open("https://www.makemytrip.com/flights/")
-        
-def date():
-    """
-    Just return date as string
-    :return: date if success, False if fail
-    """
-    try:
-        date = datetime.datetime.now().strftime("%b %d %Y")
-    except Exception as e:
-        print(e)
-        date = False
-    return date
-
-
-def time():
-    """
-    Just return time as string
-    :return: time if success, False if fail
-    """
-    try:
-        time = datetime.datetime.now().strftime("%H:%M:%S")
-    except Exception as e:
-        print(e)
-        time = False
-    return time
-    
     
 #______________________________________________________________CAB______________________________________________________________
 
@@ -162,38 +128,6 @@ def hotel():
         
 #______________________________________________________________________________________________________________________________
 
-        # __________________OTT PLATFORMS_____________________
-        
-        elif "open" and "netflix" in query:
-
-            speak("\nOpening Netflix Sir...")
-
-            webbrowser.open("www.Netflix.com")
-            
-
-        elif "open primevidio" in query:
-
-            speak("\nOpening Amazon Prime Vidio Sir...")
-
-            webbrowser.open("www.primevidio.com")
-            
-
-        elif "open" and "hotstar" in query:
-
-            speak("\nOpening Disney Plus Hotstar Sir...")
-
-            webbrowser.open("www.Hotstar.com")
-            
-
-        
-      
-    #______________________________________________________
-   
-   elif "open atom" in query:
-            os.system("start atom")
-            
-     __________________________________________________
-     
     def movie():
 
     speak("Where Would You like to Watch Movie ")
@@ -203,38 +137,4 @@ def hotel():
     speak("Enjoy Your Movie")
 
     webbrowser.open("https://in.bookmyshow.com/explore/home/"+query3)
-    
-    
-#_________________________________________________________ONLINE FOOD______________________________________________________
-
-def food():
-
-    speak("Would You Like To Order In Zomato Or swiggy")
-
-    query = takecommand().lower()
-
-    if "zomato" in query:
-
-        speak("Where do you live")
-
-        place = takecommand().lower()
-
-        webbrowser.open("https://www.zomato.com/"+place+"/order-food-online")
-
-    elif "swiggy" in query:
-
-        webbrowser.open("https://www.swiggy.com/restaurants")
-     
-#__________________________________________________________AMAZON__________________________________________________________
-
-def amazon():
-
-    speak("What would You Like To order From Amazon")
-
-    query = takecommand().lower()
-
-    speak("you have searched "+query)
-
-    webbrowser.open("https://www.amazon.in/"+query)     
-     
 ```
