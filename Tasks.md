@@ -565,3 +565,18 @@ def amazon():
 - communicate() returns a tuple (stdout_data, stderr_data)
 - The data will be strings if streams were opened in text mode; otherwise, bytes.
 - The Chatbot prints the Output and the Errors if any
+```py
+def piii():
+
+    query = takecommand().lower()
+
+    cmd = 'python '+query+'.py'
+
+    p = subprocess.Popen(cmd,shell=True)
+
+    out,error = p.communicate()
+
+    print(error)
+
+    print(out)
+```
