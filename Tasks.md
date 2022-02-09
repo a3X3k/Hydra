@@ -487,3 +487,31 @@ def Cab():
 
         webbrowser.open("https://www.uber.com/in/en/%22)
  ```
+
+### Hotel Reservations
+- For Hotel Reservation, the User can select whether he wants to book in India or any other Foreign Country
+- Depending on the choice, the Chatbot asks the place to which the User wishes to travel to
+- The User is re-directed to the respective booking pages
+```py
+def hotel():
+
+    speak("would You Like to Book Hotels In India or International")
+
+    query = takecommand().lower()
+
+    if query == "india":
+
+        speak("where do you wish to travel")
+
+        destt = takecommand().lower()
+
+        webbrowser.open("https://www.goibibo.com/hotels/hotels-in-%22+destt+%22-ct/%22)
+
+    elif query == "international":
+
+        speak("where do you wish to travel")
+
+        dest1 = takecommand().lower()
+
+        webbrowser.open("https://www.goibibo.com/hotels-international/hotels-in-%22+dest1+%22-ct/%22)
+```
