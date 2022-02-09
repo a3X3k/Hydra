@@ -405,9 +405,9 @@ pyautogui.press("tab")
 pyautogui.keyUp("alt")
 ```
 
-## Reservationo of tickets for Bus, Train, Flight, Cab, Food
+## Reservation of Bus, Train, Flight, Cab & Food
 
-```bash
+```py
 Bus Reservation - webbrowser.open("https://www.makemytrip.com/bus-tickets/")
 
 Train Reservation - webbrowser.open("https://www.makemytrip.com/railways/")
@@ -435,29 +435,26 @@ International Hotel - webbrowser.open("https://www.goibibo.com/hotels-internatio
 
 ## Running Python Scripts
 
-- Using Chatbot, we are able to open python scripts present in our System. We implement this feature using SubProcess Module
-- The Subprocess Module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
-- The User tells the Bot which Python Script to run
-- The query stores the file name and the cmd variable stores the file name as present in the system
-- Python subprocess Popen is used to execute a child program in a new process. We can use it to run some shell commands
+- We shall open **python scripts** present in our system using `SubProcess` Module.
+- The `Subprocess` Module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
+- The path query told by the user is stored in the file name and the cmd variable stores the file name as present in the system.
+- Python subprocess Popen is used to execute a child program in a new process which can be used to run some shell commands.
 - Popen creates a pipe between the calling program and the executed command, and returns a pointer to a stream that can be used to either read from or write to the pipe.
-- communicate() used to read input and the output forom the process itself.
-- communicate() returns a tuple (stdout_data, stderr_data)
-- The data will be strings if streams were opened in text mode; otherwise, bytes.
-- The Chatbot prints the Output and the Errors if any
 
 ```py
-def piii():
+query = takecommand().lower()
 
-    query = takecommand().lower()
+cmd = 'python '+ query + '.py'
 
-    cmd = 'python '+query+'.py'
+p = subprocess.Popen(cmd, shell=True)
 
-    p = subprocess.Popen(cmd,shell=True)
+out, error = p.communicate()
 
-    out,error = p.communicate()
+print(error)
 
-    print(error)
-
-    print(out)
+print(out)
 ```
+
+- `communicate()` used to read input and the output forom the process itself.
+- `communicate()` returns a tuple (stdout_data, stderr_data)
+- The data will be **strings** if streams are opened in text mode, otherwise **Bytes**.
