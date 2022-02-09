@@ -405,156 +405,36 @@ pyautogui.press("tab")
 pyautogui.keyUp("alt")
 ```
 
-## Booking tickets for Train, Flight and Bus
-- We can book Train, Bus or Flight tickets using MakeMyTrip.
-- First, the User specifies which mode of transport he prefers. 
-- If the choice is train, the user can choose whether he needs to book a ticket, check PNR status or to check the Live Train Status
-- If the User selects PNR Status, the Chatbot will ask for the PNR Number, and it re-directs to the particular PNR Status Page
-- The command prompt will open the website based on the User's choice
-- If the choice is bus, the User will be re-directed to the Bus Booking Page
-- If the choice is Flight, the User will be re-directed to the Flight Booking Page
+## Reservationo of tickets for Bus, Train, Flight, Cab, Food
 
 ```py
+Bus Reservation - webbrowser.open("https://www.makemytrip.com/bus-tickets/")
 
-def makemytrip():
+Train Reservation - webbrowser.open("https://www.makemytrip.com/railways/")
+            
+PNR Status - webbrowser.open("https://www.confirmtkt.com/pnr-status/")
 
-    speak("Train, bus or flight")
+Live Train Status - webbrowser.open("https://www.makemytrip.com/railways/liveStatus/")
 
-    query = takecommand().lower()
+Flight Reservation - webbrowser.open("https://www.makemytrip.com/flights/")
 
-    if query == "train":
+Ola Cab - webbrowser.open("https://book.olacabs.com/")
 
-        speak("book train ticket or check pnr status or check live train status")
+Uber Cab - webbrowser.open("https://www.uber.com/in/en/")
 
-        query1= takecommand().lower()
+Zomato - webbrowser.open("https://www.zomato.com/%22+place+%22/order-food-online")
 
-        if "book" or "ticket" in query1:
+Swiggy - webbrowser.open("https://www.swiggy.com/restaurants")
 
-            print("Redirecting to Booking Page")
+Amazon - webbrowser.open("https://www.amazon.in/%22" + <Item Name>)
 
-            webbrowser.open("https://www.makemytrip.com/railways/%22)
+Indian Hotel - webbrowser.open("https://www.goibibo.com/hotels/hotels-in-" + <Destination> +"-ct/")
 
-        elif "pnr" in query1:
-
-            speak("What is Your Pnr number")
-
-            no = takecommand()
-
-            print("Redirecting to pnr status page")
-
-            webbrowser.open("https://www.makemytrip.com/railways/pnrsearch/?pnr=%22+no)
-
-        else:
-
-            print("redirecting to live train status page")
-
-            webbrowser.open("https://www.makemytrip.com/railways/liveStatus/%22)
-
-    elif query == "bus":
-
-        print("Redirecting to Bus Booking")
-
-        webbrowser.open("https://www.makemytrip.com/bus-tickets/%22)
-
-
-    elif query == "flight":
-
-        print("redirecting to Flight Booking")
-
-        webbrowser.open("https://www.makemytrip.com/flights/%22)
-```
-### Booking Cab
-- The User can book Cabs from our Chatbot by specifying which aggregator he prefers
-- The User has a choice between Ola and Uber
-- Depending on the choice, the User is redirected to the respective pages
-
-```py
-def Cab():
-
-    speak("Sir would You like to book ola or uber")
-
-    query = takecommand().lower()
-
-    if "ola" in query:
-
-        speak("You have choosed ola sir")
-
-        webbrowser.open("https://book.olacabs.com/%22)
-
-    elif "uber" in query:
-
-        speak("You have choosed uber sir")
-
-        webbrowser.open("https://www.uber.com/in/en/%22)
- ```
-
-### Hotel Reservations
-- For Hotel Reservation, the User can select whether he wants to book in India or any other Foreign Country
-- Depending on the choice, the Chatbot asks the place to which the User wishes to travel to
-- The User is re-directed to the respective booking pages
-```py
-def hotel():
-
-    speak("would You Like to Book Hotels In India or International")
-
-    query = takecommand().lower()
-
-    if query == "india":
-
-        speak("where do you wish to travel")
-
-        destt = takecommand().lower()
-
-        webbrowser.open("https://www.goibibo.com/hotels/hotels-in-%22+destt+%22-ct/%22)
-
-    elif query == "international":
-
-        speak("where do you wish to travel")
-
-        dest1 = takecommand().lower()
-
-        webbrowser.open("https://www.goibibo.com/hotels-international/hotels-in-%22+dest1+%22-ct/%22)
-```
-### Ordering Food
-- The User can select if he likes to order from Swiggy or Zomato
-- The User then selects the place to which he needs the food to be delivered
-- According to the choices, the User is re-directed to the webpages
-```py
-def food():
-
-    speak("Would You Like To Order In Zomato Or swiggy")
-
-    query = takecommand().lower()
-
-    if "zomato" in query:
-
-        speak("Where do you live")
-
-        place = takecommand().lower()
-
-        webbrowser.open("https://www.zomato.com/%22+place+%22/order-food-online%22)
-
-    elif "swiggy" in query:
-
-        webbrowser.open("https://www.swiggy.com/restaurants%22)
-```
-
-### Order through Amazon
-- The User is asked which material he requires through Amazon
-- The User is then re-directed to the requested webpage
-```py
-def amazon():
-
-    speak("What would You Like To order From Amazon")
-
-    query = takecommand().lower()
-
-    speak("you have searched "+query)
-
-    webbrowser.open("https://www.amazon.in/%22+query)
-```
+International Hotel - webbrowser.open("https://www.goibibo.com/hotels-international/hotels-in-" + <Destination> + "-ct/")
+```    
 
 ## Running Python Scripts
+
 - Using Chatbot, we are able to open python scripts present in our System. We implement this feature using SubProcess Module
 - The Subprocess Module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
 - The User tells the Bot which Python Script to run
@@ -565,6 +445,7 @@ def amazon():
 - communicate() returns a tuple (stdout_data, stderr_data)
 - The data will be strings if streams were opened in text mode; otherwise, bytes.
 - The Chatbot prints the Output and the Errors if any
+
 ```py
 def piii():
 
