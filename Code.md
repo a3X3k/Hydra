@@ -32,7 +32,6 @@ emails = {
     "abhishek gmail": "shek1harley@gmail.com",
 }
 
-
 def speak(audio):
 
     print(audio)
@@ -117,7 +116,7 @@ def wish():
         speak("Good Evening Sir")
 
         speak(f"Currently its {date()} {time()}")
-	
+
 
 def Email():
 
@@ -517,6 +516,165 @@ def Plan_My_Trip():
         speak("\nOh no, I didn't get proper query Sir. Redirecting you to Hydra's Features...")
 
 
+def News():
+
+    from gnewsclient import gnewsclient
+
+    client = gnewsclient.NewsClient(language = 'english')
+
+    speak("\nThese are the categories available Sir!")
+ 
+    speak(client.topics)
+
+    speak("\nWhich category of news are you interested in Sir?")
+
+    choice = takecommand().lower()
+
+    if "top" in choice:
+
+        speak("\nAlright, here is the Top Stories Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', max_results = 5)
+
+        news_list = client.get_news()
+ 
+        for item in news_list:
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+
+    elif "world" in choice:
+
+        speak("\nAlright, here is the World News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'World', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+
+    elif "nation" in choice:
+
+        speak("\nAlright, here is the Nation News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Nation', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+            
+    elif "business" in choice:
+
+        speak("\nAlright, here is the Business News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Business', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+            
+    elif "technology" in choice:
+
+        speak("\nAlright, here is the Technology News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Technology', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+            
+    elif "entertainment" in choice:
+
+        speak("\nAlright, here is the Entertainment News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Entertainment', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+
+    elif "sports" in choice:
+
+        speak("\nAlright, here is the Sports News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Sports', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+
+    elif "science" in choice:
+
+        speak("\nAlright, here is the Science News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Science', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+
+    elif "health" in choice:
+
+        speak("\nAlright, here is the Health News Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Health', max_results = 5)
+ 
+        for item in client.get_news():
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+    else:
+
+        speak("\nOh No, there is no such category. So I am telling you today's top headlines Sir!")
+
+        client = gnewsclient.NewsClient(language = 'english', max_results = 5)
+
+        news_list = client.get_news()
+ 
+        for item in news_list:
+
+            speak(item['title'])
+
+        speak("\nThat's it Sir!")
+
+            
+    speak("\nDo you want to read all these News in brief? I can do it for you Sir. Please tell me Yes or No.")
+
+    y_or_n = takecommand().lower()
+
+    if "yes" in y_or_n:
+
+        speak("\nRedirecting you to the Source, have a good read Sir.")
+
+        for item in client.get_news():
+                    
+            webbrowser.open(item['link'])
+
 
 if __name__ == "__main__":
 
@@ -697,162 +855,7 @@ if __name__ == "__main__":
 
         elif "news" in query:
 
-            from gnewsclient import gnewsclient
-
-            client = gnewsclient.NewsClient(language = 'english')
-
-            speak("\nThese are the categories available Sir!")
- 
-            speak(client.topics)
-
-            speak("\nWhich category of news are you interested in Sir?")
-
-            choice = takecommand().lower()
-
-            if "top" in choice:
-
-                speak("\nAlright, here is the Top Stories Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', max_results = 5)
-
-                news_list = client.get_news()
- 
-                for item in news_list:
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-
-            elif "world" in choice:
-
-                speak("\nAlright, here is the World News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'World', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-
-            elif "nation" in choice:
-
-                speak("\nAlright, here is the Nation News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Nation', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-            
-            elif "business" in choice:
-
-                speak("\nAlright, here is the Business News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Business', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-            
-            elif "technology" in choice:
-
-                speak("\nAlright, here is the Technology News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Technology', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-            
-            elif "entertainment" in choice:
-
-                speak("\nAlright, here is the Entertainment News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Entertainment', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-
-            elif "sports" in choice:
-
-                speak("\nAlright, here is the Sports News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Sports', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-
-            elif "science" in choice:
-
-                speak("\nAlright, here is the Science News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Science', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-
-            elif "health" in choice:
-
-                speak("\nAlright, here is the Health News Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', location='india', topic = 'Health', max_results = 5)
- 
-                for item in client.get_news():
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-            else:
-
-                speak("\nOh No, there is no such category. So I am telling you today's top headlines Sir!")
-
-                client = gnewsclient.NewsClient(language = 'english', max_results = 5)
-
-                news_list = client.get_news()
- 
-                for item in news_list:
-
-                    speak(item['title'])
-
-                speak("\nThat's it Sir!")
-
-            
-            speak("\nDo you want to read all these News in brief? I can do it for you Sir. Please tell me Yes or No.")
-
-            y_or_n = takecommand().lower()
-
-            if "yes" in y_or_n:
-
-                speak("\nRedirecting you to the Source, have a good read Sir.")
-
-                for item in client.get_news():
-                    
-                    webbrowser.open(item['link'])
+            News()
 
 
         elif "play movie" in query:
