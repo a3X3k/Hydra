@@ -1,6 +1,4 @@
 ```py
-#____________________Send Messages on Discord Server_______
-
 def Discord(): 
 
 #conda install -c anaconda requests install before running
