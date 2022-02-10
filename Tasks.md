@@ -470,16 +470,24 @@ print(out)
   - File Name
 
 ```py
-for root, dirs, files in os.walk("C://"):
-    print root
-    print dirs
-    print files
+for Root, Dir, File in os.walk("C://"):
+
+    print Root
+    
+    print Dir
+    
+    print File
 ```
 
+Root
 
-> root : It prints out directories only from what you specified. 
-> Meaning you need to specify the path suggesting where it should start walking and printing.
+  - It prints out directories only from what you specified. 
+  - Meaning you need to specify the path suggesting where it should start walking and printing.
 
-> dirs : It prints out sub-directories from the root.
+Dir
 
-> files : It prints out all files from root and directories.
+  - It prints out sub-directories from the root.
+
+File 
+
+  - It prints out all files from root and directories.
