@@ -479,20 +479,20 @@ for Root, Dir, File in os.walk("C://"):
     print File
 ```
 
-Root
+- Root
 
-  - It prints out directories only from what you specified. 
-  - Meaning you need to specify the path suggesting where it should start walking and printing.
+    - It prints out directories only from what you specified. 
+    - Meaning you need to specify the path suggesting where it should start walking and printing.
 
-Dir
+- Dir
 
-  - It prints out sub-directories from the root.
+    - It prints out sub-directories from the root.
 
-File 
+- File 
 
-  - It prints out all files from root and directories.
+    - It prints out all files from root and directories.
 
-- By default, Python will walk the directory tree in a top-down order (a directory will be passed to you for the processing), and then Python will descend into any sub-directories.
-- When topdown is True, the caller can modify the dirnames list in-place (perhaps using del or slice assignment), and walk() will only recurse into the subdirectories whose names remain in dirnames.
-- This can be used to prune the search, impose a specific order of visiting, or even to inform walk() about directories the caller creates or renames before it resumes walk() again.
-- Modifying dirnames when topdown is False is ineffective because in bottom-up mode, the directories in dirnames are generated before dirpath itself is generated.
+- By default, python will walk the directory tree in a **top-down** order ( a directory will be passed to you for the processing ), and then python will descend into any sub-directories.
+- When **topdown** is **True**, the caller can modify the dirnames list in-place ( perhaps using del or slice assignment ), and `walk()` will only recurse into the subdirectories whose names remain in dirnames.
+- This can be used to prune the search, impose a specific order of visiting, or even to inform `walk()` about directories the caller creates or renames before it resumes `walk()` again.
+- Modifying dirnames when **topdown** is **False** is ineffective because in **bottom-up** mode, the directories in dirnames are generated before dirpath itself is generated.
