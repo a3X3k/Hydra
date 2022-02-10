@@ -458,3 +458,28 @@ print(out)
 - `communicate()` used to read input and the output forom the process itself.
 - `communicate()` returns a tuple (stdout_data, stderr_data)
 - The data will be **strings** if streams are opened in text mode, otherwise **Bytes**.
+
+## Locating Files in the System
+
+- Python has a cool built-in function in the OS module that is called `os.walk()`.
+- To traverse the directories in Python, use the `os.walk()` function. 
+- The `os.walk()` function in Python generates the file names in the file index tree by walking a tree either top-down or bottom-up. 
+- For each directory in the tree rooted at the directory top, it generates a **3-tuple**, which are 
+  - Directory Path
+  - Directory Name
+  - File Name
+
+```py
+for root, dirs, files in os.walk("C://"):
+    print root
+    print dirs
+    print files
+```
+
+
+> root : It prints out directories only from what you specified. 
+> Meaning you need to specify the path suggesting where it should start walking and printing.
+
+> dirs : It prints out sub-directories from the root.
+
+> files : It prints out all files from root and directories.
