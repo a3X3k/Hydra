@@ -16,6 +16,8 @@ import yagmail
 import pyautogui
 import time
 import pygetwindow as gw
+import subprocess
+import win32api
 
 engine = pyttsx3.init()
 
@@ -25,12 +27,6 @@ engine.setProperty('voice', voices[1].id)
 
 engine.setProperty('rate', 175)
 
-
-emails = {
-
-    "abhishek outlook": "abhishekabi2002@outlook.com",
-    "abhishek gmail": "shek1harley@gmail.com",
-}
 
 def speak(audio):
 
@@ -105,17 +101,24 @@ def wish():
 
     if hour >= 0 and hour < 12:
 
-        speak("Good Morning Sir")
+        speak("\nHellow, this is Hydra! Good Morning...")
 
     elif hour >= 12 and hour < 17:
 
-        speak("Good Afternoon Sir")
+        speak("\nHellow, this is Hydra! Good Afternoon...")
 
     else:
 
-        speak("Good Evening Sir")
+        speak("\nHellow, this is Hydra! Good Evening...")
 
-        speak(f"Currently its {date()} {time()}")
+        speak(f"\nCurrently its {time()}")
+
+
+emails = {
+
+    "abhishek outlook": "abhishekabi2002@outlook.com",
+    "abhishek gmail": "shek1harley@gmail.com",
+}
 
 
 def Email():
@@ -185,6 +188,191 @@ def Email():
             speak("\nMail has been sent successfully Sir!")
 
             server.quit()
+
+
+Formats = ['Image', 'Audio', 'Video', 'Programming', 'Word', 'Presentation', 'Spreadsheet', 'Compression', 'Executable', 'Disc', 'Database', 'Email']
+
+Image = ['.jpeg', '.jpg', '.png', '.gif', '.bmp', '.ico', '.ai', '.ps', '.psd', '.svg', '.tif', '.tiff']
+
+Audio = ['.mp3',  '.wav', '.aif', '.ogg',  '.wma',  '.wpl',  '.cda', '.mpa', '.mid',  '.midi']
+
+Video = ['.mp4', '.mov', '.mkv', '.mpg', '.mpeg', '.wmv', '.3g2' , '.3gp', '.avi', '.flv', '.h264', '.m4v', '.rm', '.swf', '.vob']
+
+Programming = ['.py', '.c', '.cpp', '.class', '.cs', '.h', '.java', '.sh', '.swift', '.vb', '.java','.html', 'htm', '.css', '.js', '.jsp',  '.php', '.part', '.rss', '.xhtml', '.cgi', '.pl', '.cfm', '.cer', '.asp', '.aspx']
+
+Word = ['.doc', '.docx', '.pdf', '.txt', '.odt', '.rtf', '.tex', '.wpd']
+
+Presentation = ['.ppt', '.pptx', '.pps', '.odp', '.key']
+
+Spreadsheet = ['.xls', '.xlsx', '.xlsm', '.ods']
+
+Compression = ['.zip', '.7z', '.rar', '.arj', '.deb', '.pkg', '.rpm', '.z']
+
+Executable = ['.apk', '.bat', '.bin', '.cgi', '.com', '.exe', '.gadget', '.jar', '.msi', '.wsf']
+
+Disc = ['.bin', '.iso', '.dmg', '.toast', '.vcd']
+
+Database = ['.csv', '.dat', '.tar', '.xml', '.db', '.dbf', '.log', '.mdb', '.sav', '.sql']
+
+Email = ['.vcf', '.email', '.eml', '.emlx', '.msg', '.oft', '.ost', '.pst', '.vcf']
+
+
+def Directory():
+
+    drives = win32api.GetLogicalDriveStrings()
+
+    return drives.split('\000')[:-1]
+
+
+def Extension(List):
+
+    speak("\nPlease select the file format from this Sir...")
+
+    for i in List:
+
+        speak(f"\n{i}")
+
+        speak("\nIs this your file format Sir...")
+
+        query = takecommand().lower()
+
+        if "yes" in query:
+
+            return i
+
+
+def Category(List):
+
+    if List == "Audio":
+
+        return Extension(Audio)
+
+    elif List == "Image":
+
+        return Extension(Image)
+
+    elif List == "Video":
+
+        return Extension(Video)
+
+    elif List == "Programming":
+
+        return Extension(Programming)
+
+    elif List == "Word":
+
+        return Extension(Word)
+
+    elif List == "Presentation":
+
+        return Extension(Presentation)
+
+    elif List == "Spreadsheet":
+
+        return Extension(Spreadsheet)
+
+    elif List == "Compression":
+
+        return Extension(Compression)
+
+    elif List == "Executable":
+
+        return Extension(Executable)
+
+    elif List == "Disc":
+
+        return Extension(Disc)
+
+    elif List == "Database":
+
+        return Extension(Database)
+
+    elif List == "Email":
+
+        return Extension(Email)
+ 
+
+def Locate():
+
+    Dir = Directory()
+
+    speak("\nPlease tell the name of the file without extension Sir!")
+
+    fname = takecommand().lower()
+
+    speak("\nDo you know the extension of the file Sir?")
+
+    query = takecommand().lower()
+
+    fileformat = ""
+        
+    if "yes" in query:
+
+        speak("\nAlright... There are hundreds of different file extensions and file types available and it would be easy for me if you select the right file type Sir.")
+
+        speak("\nPlease tell me if your file comes under these categories...")
+
+        f_format = ""
+
+        for i in Formats:
+
+            speak(f"\n{i}")
+
+            speak("\nDoes your file comes under this category Sir?")
+
+            query = takecommand().lower()
+            
+            if "yes" in query:
+
+                f_format = Category(i) 
+
+                break
+
+        file_name = fname + f_format
+
+        speak(f"\nIs this the file you want to Search Sir? - {file_name}")
+
+        query = takecommand().lower()
+
+        if "yes" in query:
+
+            speak("\nSearching for your file Sir. This may take a while...")
+
+            for i in Dir:
+
+                temp = i.replace("\\", "").replace(":", "")
+
+                speak(f"\nStart Searching in {temp} Drive...")
+
+                c = 1
+
+                for r, d, f in os.walk(i):
+
+                    for file in f:
+
+                        if file_name in file:
+
+                            speak(f"\nFile {c} - {os.path.join(r, file)}")
+
+                            c += 1
+
+        else:
+
+            Locate()
+
+    else:
+
+        speak("\nSearching for your file Sir. This may take a while...")
+
+        for i in Dir:
+
+            for r, d, f in os.walk(i):
+
+                for file in f:
+
+                    if fname + type in file:
+
+                        speak(os.path.join(r, file))
 
 
 def Camera():
@@ -676,6 +864,55 @@ def News():
             webbrowser.open(item['link'])
 
 
+def Script():
+
+    speak("\nIs the file present in this directory Sir?")
+
+    query = takecommand().lower()
+
+    if "yes" in query:
+
+        speak("\nTell the file name Sir...")
+
+        speak(f"\nThe output is {subprocess.getoutput('python '+ takecommand() +'.py')}")
+
+    else:
+
+        speak("\nPlease tell the file name Sir...")
+
+        fname = takecommand().lower()
+
+        fname = fname + ".py"
+       
+        Dir = Directory()
+
+        speak("\nSearching for your file Sir. This may take a while...")
+
+        for i in Dir:
+
+            temp = i.replace("\\", "").replace(":", "")
+
+            speak(f"\nStart Searching in {temp} Drive...")
+
+            for r, d, f in os.walk(i):
+
+                for file in f:
+
+                    if fname in file:
+
+                        speak(f"\n{os.path.join(r, file)}")
+
+                        speak("\nIs this the file you wanna run Sir?")
+
+                        query = takecommand().lower()
+
+                        if "yes" in query:
+
+                            target = '"' + os.path.join(r, file) + '"'
+
+                            speak(f"\nThe output is {subprocess.getoutput('python '+ target)}")
+
+
 if __name__ == "__main__":
 
     wish()
@@ -698,7 +935,6 @@ if __name__ == "__main__":
 
             os.system("taskkill /im notepad.exe /f")
 
-
         elif "open web browser" in query:
 
             os.system("start brave.exe")
@@ -707,7 +943,6 @@ if __name__ == "__main__":
 
             os.system("taskkill /im brave.exe /f")
 
-        
         elif "open command prompt" in query:
 
             os.system("start cmd") 
@@ -881,6 +1116,16 @@ if __name__ == "__main__":
         elif "plan my trip" in query:
 
             Plan_My_Trip()
+
+
+        elif "locate" in query:
+
+            Locate()
+
+
+        elif "python" in query:
+
+            Script()
 
         
         elif "quit" in query:
