@@ -496,3 +496,17 @@ for Root, Dir, File in os.walk("C://"):
 - When **topdown** is **True**, the caller can modify the dirnames list in-place ( perhaps using del or slice assignment ), and `walk()` will only recurse into the subdirectories whose names remain in dirnames.
 - This can be used to prune the search, impose a specific order of visiting, or even to inform `walk()` about directories the caller creates or renames before it resumes `walk()` again.
 - Modifying dirnames when **topdown** is **False** is ineffective because in **bottom-up** mode, the directories in dirnames are generated before dirpath itself is generated.
+
+## Running a Script inside a Script
+
+- Subprocess in Python is a module used to run new codes and applications by creating new processes. 
+- It lets you start new applications right from the Python program you are currently writing. 
+- So, if you want to run external programs from a git repository or codes from C or C++ programs, you can use subprocess in Python.
+- You can also get exit codes and input, output, or error pipes using subprocess in Python.
+- The subprocess module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
+- `subprocess.getoutput(cmd)` returns the output (stdout and stderr) of executing cmd in a shell.
+- Like `getstatusoutput()`, except the exit code is ignored and the return value is a string containing the command's output.
+
+```py
+subprocess.getoutput('ls /home')
+```
