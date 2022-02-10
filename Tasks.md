@@ -468,6 +468,10 @@ print(out)
   - Directory Path
   - Directory Name
   - File Name
+- By default, python will walk the directory tree in a **top-down** order ( a directory will be passed to you for the processing ), and then python will descend into any sub-directories.
+- When **topdown** is **True**, the caller can modify the dirnames list in-place ( perhaps using del or slice assignment ), and `walk()` will only recurse into the subdirectories whose names remain in dirnames.
+- This can be used to prune the search, impose a specific order of visiting, or even to inform `walk()` about directories the caller creates or renames before it resumes `walk()` again.
+- Modifying dirnames when **topdown** is **False** is ineffective because in **bottom-up** mode, the directories in dirnames are generated before dirpath itself is generated.
 
 ```py
 for Root, Dir, File in os.walk("C://"):
@@ -491,11 +495,6 @@ for Root, Dir, File in os.walk("C://"):
 - File 
 
     - It prints out all files from root and directories.
-
-- By default, python will walk the directory tree in a **top-down** order ( a directory will be passed to you for the processing ), and then python will descend into any sub-directories.
-- When **topdown** is **True**, the caller can modify the dirnames list in-place ( perhaps using del or slice assignment ), and `walk()` will only recurse into the subdirectories whose names remain in dirnames.
-- This can be used to prune the search, impose a specific order of visiting, or even to inform `walk()` about directories the caller creates or renames before it resumes `walk()` again.
-- Modifying dirnames when **topdown** is **False** is ineffective because in **bottom-up** mode, the directories in dirnames are generated before dirpath itself is generated.
 
 ## Running a Script inside a Script
 
