@@ -17,7 +17,7 @@ def Discord():
     r = requests.post("https://discord.com/api/v9/channels/938752936232763404/messages", data=payload,headers = header)
 ```
 
-```
+```py
 def convert_size(size_bytes):
    if size_bytes == 0:
        return "0B"
