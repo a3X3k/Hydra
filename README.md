@@ -35,7 +35,10 @@ conda env remove -n ENV_NAME
 pip freeze > requirements.txt  # Python3
 
 conda list -e > requirements.txt
+```
 
+```py
+pyuic5 -x JarvisUI.ui -o JarvisUI.py
 ```
 
 <br/>
