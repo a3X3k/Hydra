@@ -1,6 +1,8 @@
 ```py
 from curses import window
 from email.message import Message
+import sys
+from tkinter import Y
 import pyttsx3
 import speech_recognition as sr
 import datetime
@@ -18,6 +20,14 @@ import time
 import pygetwindow as gw
 import subprocess
 import win32api
+from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtCore import QTimer, QTime, QDate, Qt
+from PyQt5.QtGui import QMovie
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.uic import loadUiType
+from JarvisUI import Ui_JarvisUI
 
 engine = pyttsx3.init()
 
@@ -121,7 +131,7 @@ emails = {
 }
 
 
-def Email():
+def Mail():
 
     speak("\nTo whom do you want to send the mail Sir?")
 
@@ -135,17 +145,23 @@ def Email():
 
         if "yes" in takecommand().lower():
 
-            speak("\nPlease type the Recipient's Name Sir. Remember that the same name has to be used for future references.")
+            speak("\nPlease tell the Recipient's Name Sir. Remember that the same name has to be used for future references...")
 
-            name = input()
+            name = takecommand().lower()
 
-            speak("\nPlease type the Mail ID Sir.")
+            speak("\nPlease spell the domain name before @ Sir...")
 
-            ID = input()
+            ID = takecommand().lower()
 
-            emails[name] = ID
+            speak("\nWhich Email provider does this ID belongs to Sir?")
 
-            speak("\nInformation has been updated Sir. Please try again to send the Email.")
+            provider = takecommand().lower()
+
+            emailID = ID.replace(" ","") + "@" + provider + ".com"
+
+            emails[name] = emailID
+
+            speak("\nInformation has been updated Sir. Please try again to send the Email...")
                 
     else:
 
@@ -159,7 +175,7 @@ def Email():
 
         if "yes" in takecommand().lower():
 
-            yag = yagmail.SMTP('@gmail.com', '')
+            yag = yagmail.SMTP('abhishekabi2002@gmail.com', '')
 
             contents = [Message]
 
@@ -181,9 +197,9 @@ def Email():
                 
         else:
                     
-            server.login('@gmail.com', '')
+            server.login('abhishekabi2002@gmail.com', '')
 
-            server.sendmail('@gmail.com', emails[Mail_ID], Message)
+            server.sendmail('abhishekabi2002@gmail.com', emails[Mail_ID], Message)
 
             speak("\nMail has been sent successfully Sir!")
 
@@ -402,7 +418,7 @@ def Camera():
     cv2.destroyAllWindows()
 
 
-def Wikipedia():
+def Wiki():
 
     speak("\nWhat do you want to search for in Wikipedia Sir?")
 
@@ -912,233 +928,306 @@ def Script():
 
                             speak(f"\nThe output is {subprocess.getoutput('python '+ target)}")
 
+class MainThread(QThread):
 
-if __name__ == "__main__":
+    def __init__(self):
 
-    wish()
+        super(MainThread, self).__init__()
 
-    speak("\nWhat can I do for you Sir?")
+    def run(self):
 
-    while(1):
+        self.TaskExecution()
 
-        query = takecommand().lower()
 
-        if "nothing" in query:
+    def TaskExecution(self):
 
-            continue
+        wish()
 
-        elif "open notepad" in query:
+        speak("\nWhat can I do for you Sir?")
 
-            os.system("start notepad.exe")
+        while(1):
 
-        elif "close notepad" in query:
+            query = takecommand().lower()
 
-            os.system("taskkill /im notepad.exe /f")
+            if "nothing" in query:
 
-        elif "open web browser" in query:
+                continue
 
-            os.system("start brave.exe")
+            elif "open notepad" in query:
 
-        elif "close web browser" in query:
+                os.system("start notepad.exe")
 
-            os.system("taskkill /im brave.exe /f")
+            elif "close notepad" in query:
 
-        elif "open command prompt" in query:
+                os.system("taskkill /im notepad.exe /f")
 
-            os.system("start cmd") 
+            elif "open web browser" in query:
 
-        elif "close command prompt" in query:
+                os.system("start brave.exe")
 
-            os.system("taskkill /im cmd.exe /f")
+            elif "close" and "browser" in query:
 
-        
-        elif "open camera" in query:
+                os.system("taskkill /im brave.exe /f")
 
-            Camera()
+            elif "open command prompt" in query:
 
-        
-        elif "play music" in query: 
+                os.system("start cmd") 
 
-            music_directory = "F:\Songs" 
+            elif "close command prompt" in query:
 
-            songs = os.listdir(music_directory)
+                os.system("taskkill /im cmd.exe /f")
 
-            os.startfile(os.path.join(music_directory, random.choice(songs)))
+            
+            elif "open camera" in query:
 
-        
-        elif "ip " in query: 
+                Camera()
 
-            host = socket.gethostname()
+            
+            elif "play music" in query: 
 
-            IP = socket.gethostbyname(host)
+                music_directory = "F:\Songs" 
 
-            speak("Your Host Name is : " + host)
+                songs = os.listdir(music_directory)
 
-            speak("Your Computer IP Address is : " + IP)
+                os.startfile(os.path.join(music_directory, random.choice(songs)))
 
-        
-        elif "wikipedia" in query:
+            
+            elif "ip " in query: 
 
-            wikipedia()
+                host = socket.gethostname()
 
-        
-        elif "open youtube" in query:
+                IP = socket.gethostbyname(host)
 
-            speak("\nOpening Youtube Sir...")
+                speak("Your Host Name is : " + host)
 
-            webbrowser.open("www.youtube.com")
+                speak("Your Computer IP Address is : " + IP)
 
-        
-        elif "open" and "facebook" in query:
+            
+            elif "wikipedia" in query:
 
-            speak("\nOpening Facebook Sir...")
+                Wiki()
 
-            webbrowser.open("www.facebook.com")
+            
+            elif "open youtube" in query:
 
-        
-        elif "open" and "instagram" in query:
+                speak("\nOpening Youtube Sir...")
 
-            speak("\nOpening Instagram Sir...")
+                webbrowser.open("www.youtube.com")
 
-            webbrowser.open("www.instagram.com")
+            
+            elif "open" and "facebook" in query:
 
-        
-        elif "open" and "linkedin" in query:
+                speak("\nOpening Facebook Sir...")
 
-            speak("\nOpening LinkedIn Sir...")
+                webbrowser.open("www.facebook.com")
 
-            webbrowser.open("www.linkedin.com")
+            
+            elif "open" and "instagram" in query:
 
-        
-        elif "open" and "twitter" in query:
+                speak("\nOpening Instagram Sir...")
 
-            speak("\nOpening Twitter Sir...")
+                webbrowser.open("www.instagram.com")
 
-            webbrowser.open("www.twitter.com")
+            
+            elif "open" and "linkedin" in query:
 
-        
-        elif "open" and "instagram" in query:
+                speak("\nOpening LinkedIn Sir...")
 
-            speak("\nOpening Twitter Sir...")
+                webbrowser.open("www.linkedin.com")
 
-            webbrowser.open("www.twitter.com")
+            
+            elif "open" and "twitter" in query:
 
-        
-        elif "search" and "google" in query:
+                speak("\nOpening Twitter Sir...")
 
-            Google_Search()
+                webbrowser.open("www.twitter.com")
 
+            
+            elif "open" and "instagram" in query:
 
-        elif "whatsapp" in query:
+                speak("\nOpening Twitter Sir...")
 
-            Whatsapp()
+                webbrowser.open("www.twitter.com")
 
+            
+            elif "search" and "google" in query:
 
-        elif "songs" and "youtube" in query:
+                Google_Search()
 
-            YouTube_Songs()
 
-        
-        elif "send email" in query:
+            elif "whatsapp" in query:
 
-            Email()
+                Whatsapp()
 
-        
-        elif "switch" in query:
 
-            window = Switch_Window()
+            elif "songs" and "youtube" in query:
 
-            speak(f"\nThere are totally {len(window)} windows open Sir!")
+                YouTube_Songs()
 
-            k = 0
+            
+            elif "send" and "mail" in query:
 
-            for i in window:
+                Mail()
 
-                speak(f"\nWindow {k + 1} : {window[k]}") 
+            
+            elif "switch" in query:
 
-                k += 1
+                window = Switch_Window()
 
-            speak("\nPlease tell the window name which you want me to Open Sir!")
+                speak(f"\nThere are totally {len(window)} windows open Sir!")
 
-            window_to_open = takecommand().lower()
+                k = 0
 
-            win_num = 0
+                for i in window:
 
-            window = Switch_Window()
+                    speak(f"\nWindow {k + 1} : {window[k]}") 
 
-            pyautogui.keyDown("alt")
+                    k += 1
 
-            for i in range(len(window)):
+                speak("\nPlease tell the window name which you want me to Open Sir!")
 
-                if window_to_open in window[i].lower():
+                window_to_open = takecommand().lower()
+
+                win_num = 0
+
+                window = Switch_Window()
+
+                pyautogui.keyDown("alt")
+
+                for i in range(len(window)):
+
+                    if window_to_open in window[i].lower():
+
+                        break
+
+                    else: 
+
+                        pyautogui.press("tab")
+
+                time.sleep(1)
+
+                pyautogui.keyUp("alt")
+
+
+            elif "navigate" in query:
+
+                Navigate()
+
+
+            elif "news" in query:
+
+                News()
+
+
+            elif "play movie" in query:
+
+                Play_Movie()
+
+
+            elif "amazon" in query:
+
+                Amazon()
+
+            
+            elif "food" in query:
+
+                Food()
+
+            
+            elif "book" and "movie" in query:
+
+                Book_Movie()
+
+
+            elif "plan my trip" in query:
+
+                Plan_My_Trip()
+
+
+            elif "locate" in query:
+
+                Locate()
+
+
+            elif "python" in query:
+
+                Script()
+
+            
+            elif "quit" in query:
+
+                speak("\nDo you really wanna quit Sir?")
+
+                if "yes" in takecommand().lower():
+
+                    speak("\nThankyou for using me Sir!")
 
                     break
 
-                else: 
+                else:
 
-                    pyautogui.press("tab")
-
-            time.sleep(1)
-
-            pyautogui.keyUp("alt")
+                    continue
 
 
-        elif "navigate" in query:
+startExecution = MainThread()
 
-            Navigate()
+class Main(QMainWindow):
 
+    def __init__(self):
 
-        elif "news" in query:
+        super().__init__()
 
-            News()
+        self.ui = Ui_JarvisUI()
 
+        self.ui.setupUi(self)
 
-        elif "play movie" in query:
+        self.ui.pushButton.clicked.connect(self.startTask)
 
-            Play_Movie()
+        self.ui.pushButton_2.clicked.connect(self.close)
 
+    def startTask(self):
 
-        elif "amazon" in query:
+        self.ui.movie = QtGui.QMovie("Source/0.gif")
 
-            Amazon()
+        self.ui.label.setMovie(self.ui.movie)
 
-        
-        elif "food" in query:
+        self.ui.movie.start()
 
-            Food()
+        self.ui.movie = QtGui.QMovie("Source/1.gif")
 
-        
-        elif "book" and "movie" in query:
+        self.ui.label_2.setMovie(self.ui.movie)
 
-            Book_Movie()
+        self.ui.movie.start()
 
+        self.ui.movie = QtGui.QMovie("Source/2.gif")
 
-        elif "plan my trip" in query:
+        self.ui.label_3.setMovie(self.ui.movie)
 
-            Plan_My_Trip()
+        self.ui.movie.start()
 
+        self.ui.movie = QtGui.QMovie("Source/3.gif")
 
-        elif "locate" in query:
+        self.ui.label_4.setMovie(self.ui.movie)
 
-            Locate()
+        self.ui.movie.start()
 
+        self.ui.movie = QtGui.QMovie("Source/3.gif")
 
-        elif "python" in query:
+        self.ui.label_5.setMovie(self.ui.movie)
 
-            Script()
+        self.ui.movie.start()
 
-        
-        elif "quit" in query:
+        timer = QTimer(self)
 
-            speak("\nDo you really wanna quit Sir?")
+        timer.start(1000)
 
-            if "yes" in takecommand().lower():
+        startExecution.start()
 
-                speak("\nThankyou for using me Sir!")
+app = QApplication(sys.argv)
 
-                break
+jarvis = Main()
 
-            else:
+jarvis.show()
 
-                continue
+exit(app.exec_())
 ```
