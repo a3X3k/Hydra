@@ -898,16 +898,6 @@ import psutil
 print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
 
 print(f"Number of logical cores: {psutil.cpu_count(logical=True)}")
-
-print(f"Current CPU frequency: {psutil.cpu_freq().current}")
-
-print(f"Min CPU frequency: {psutil.cpu_freq().min}")
-
-print(f"Max CPU frequency: {psutil.cpu_freq().max}")
-
-print(f"Current CPU utilization: {psutil.cpu_percent(interval=1)}")
-
-print(f"Current per-CPU utilization: {psutil.cpu_percent(interval=1, percpu=True)}")
 ```
 
 #### CPU frequency
@@ -937,3 +927,45 @@ for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1)):
 print(f"Total CPU Usage: {psutil.cpu_percent()}%")
 ```
 
+## Memory Usage
+
+```py
+svmem = psutil.virtual_memory()
+
+print(f"Total: {get_size(svmem.total)}")
+
+print(f"Available: {get_size(svmem.available)}")
+
+print(f"Used: {get_size(svmem.used)}")
+
+print(f"Percentage: {svmem.percent}%")
+
+swap = psutil.swap_memory()
+
+print(f"Total: {get_size(swap.total)}")
+
+print(f"Free: {get_size(swap.free)}")
+
+print(f"Used: {get_size(swap.used)}")
+
+print(f"Percentage: {swap.percent}%")
+```
+
+- `virtual_memory()` method returns stats about system memory usage as a namedtuple, including fields such as total (total physical memory available), available (available memory, i.e not used), used and percent (i.e percentage). 
+- `swap_memory()` is the same but for swap memory.
+
+```py
+def get_size(bytes, suffix="B"):
+
+    factor = 1024
+    
+    for unit in ["", "K", "M", "G", "T", "P"]:
+    
+        if bytes < factor:
+        
+            return f"{bytes:.2f}{unit}{suffix}"
+            
+        bytes /= factor
+```
+
+- `get_size()` function prints values in a scaled manner, as the statistics are expressed in bytes.
