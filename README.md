@@ -8,10 +8,8 @@
   
 | SI | Topic |
 | ---   | ----------- |
-| 1 | [Text To Speech](https://github.com/a3X3k/Hydra/blob/main/Text%20To%20Speech.md) |
-| 2 | [Speech Recognition](https://github.com/a3X3k/Hydra/blob/main/Speech%20Recognition.md) |
-| 3 | [Greeting Message](https://github.com/a3X3k/Hydra/blob/main/Greetings.md) |
-| 4 | [Tasks](https://github.com/a3X3k/Hydra/blob/main/Tasks.md) |
+| 1 | [Guide](https://github.com/a3X3k/Hydra/blob/main/Guide.md) |
+| 2 | [Source Code](https://github.com/a3X3k/Hydra/blob/main/Code.md) |
 
   </div>
   
