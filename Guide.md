@@ -927,7 +927,7 @@ for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1)):
 print(f"Total CPU Usage: {psutil.cpu_percent()}%")
 ```
 
-## Memory Usage
+## Get Memory Usage
 
 ```py
 def get_size(bytes, suffix="B"):
@@ -976,7 +976,7 @@ print(f"Percentage: {swap.percent}%")
 - Swap space is the portion of virtual memory that is on the hard disk, used when RAM is full. 
 - `swap_memory()` method returns stats about swap memory usage.
 
-## Disk Usage
+## Get Disk Usage
 
 ```py
 partitions = psutil.disk_partitions()
@@ -1014,7 +1014,7 @@ print(f"Total write : {get_size(disk_io.write_bytes)}")
 
 - `disk_usage()` function return disk usage statistics as a namedtuple, including total, used and free space expressed in bytes.
 
-## Network Stats
+## Get Network Stats
 
 ```py
 if_addrs = psutil.net_if_addrs()
@@ -1050,7 +1050,7 @@ print(f"Total Bytes Received: {get_size(net_io.bytes_recv)}")
 
 - `net_if_addrs()` function returns the addresses associated with each network interface card installed on the system.
 
-## GPU Information
+## Get GPU Information
 
 - GPUtil is a Python module for getting the GPU status for NVIDIA GPUs only, it locates all GPUs on the computer, determines their availability, and returns an ordered list of available GPUs. 
 - It requires the latest NVIDIA driver installed.
