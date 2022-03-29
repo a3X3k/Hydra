@@ -839,7 +839,7 @@ subprocess.getoutput('ls /home')
 ## Get System Information
 
 - The platform module in Python allows us to access the underlying platform’s data.
-- This includes:
+
   - Computer network name
   - Machine type
   - Processor type
@@ -848,5 +848,52 @@ subprocess.getoutput('ls /home')
   - Operating system release
   - Operating system version
 
+- Python library `platform` allows us to get the System Information.
 
+```py
+import platform
+```
 
+```py
+print(f"Computer network name: {platform.node()}")
+
+print(f"Machine type: {platform.machine()}")
+
+print(f"Processor type: {platform.processor()}")
+
+print(f"Platform type: {platform.platform()}")
+
+print(f"Operating system: {platform.system()}")
+
+print(f"Operating system release: {platform.release()}")
+
+print(f"Operating system version: {platform.version()}")
+```
+
+## Get CPU Usage
+
+- Number of physical and logical cores
+- Get CPU frequency
+- Get CPU utilization Percentage
+
+- Python library psutil allows us to get the stats of our CPU.
+
+```
+import psutil
+```
+
+```
+print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
+
+print(f"Number of logical cores: {psutil.cpu_count(logical=True)}")
+
+print(f"Current CPU frequency: {psutil.cpu_freq().current}")
+
+print(f"Min CPU frequency: {psutil.cpu_freq().min}")
+
+print(f"Max CPU frequency: {psutil.cpu_freq().max}")
+
+print(f"Current CPU utilization: {psutil.cpu_percent(interval=1)}")
+
+print(f"Current per-CPU utilization: {psutil.cpu_percent(interval=1, percpu=True)}")
+```
