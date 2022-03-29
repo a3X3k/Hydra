@@ -868,19 +868,30 @@ print(f"Operating system: {platform.system()}")
 print(f"Operating system release: {platform.release()}")
 
 print(f"Operating system version: {platform.version()}")
+
+boot_time_timestamp = psutil.boot_time()
+
+bt = datetime.fromtimestamp(boot_time_timestamp)
+
+print(f"Boot Time: {bt.year}/{bt.month}/{bt.day} {bt.hour}:{bt.minute}:{bt.second}")
 ```
 
 ## Get CPU Usage
 
-- Number of physical and logical cores
-- Get CPU frequency
-- Get CPU utilization Percentage
-
 - Python library psutil allows us to get the stats of our CPU.
+
+  - Number of physical and logical cores
+  - Get CPU frequency
+  - Get CPU utilization Percentage
 
 ```py
 import psutil
 ```
+
+#### Number of physical and logical cores
+
+- A logical core is the number of physical cores multiplied by the number of threads that can run on each physical core. 
+- `.cpu_count()` method returns a numerical value for the count of cores.
 
 ```py
 print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
@@ -897,3 +908,35 @@ print(f"Current CPU utilization: {psutil.cpu_percent(interval=1)}")
 
 print(f"Current per-CPU utilization: {psutil.cpu_percent(interval=1, percpu=True)}")
 ```
+
+#### CPU frequency
+
+- `.cpu_freq()` method returns a named tuple of values (floats) that measure frequency in Mhz : [Current frequency, Min frequency, Max frequency]
+
+```py
+print(f"Current CPU frequency: {psutil.cpu_freq().current}")
+
+print(f"Min CPU frequency: {psutil.cpu_freq().min}")
+
+print(f"Max CPU frequency: {psutil.cpu_freq().max}")
+```
+
+#### CPU utilization Percentage
+
+- The most interesting information is the utilization of your CPU. 
+- As the processes that run on your computer change, the utilization is dynamic and changes constantly.
+- `cpu_count()` function returns number of cores, whereas cpu_freq() function returns CPU frequency as a namedtuple including current, min, and max frequency expressed in Mhz, you can set percpu=True to get per CPU frequency.
+- `cpu_percent()` method returns a float representing the current CPU utilization as a percentage, setting interval to 1 (seconds) will compare system CPU times elapsed before and after a second, we set percpu to True in order to get CPU usage of each core.
+
+```py
+print(f"Current CPU utilization: {psutil.cpu_percent(interval=1)}")
+
+print("CPU Usage Per Core:")
+
+for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1)):
+
+    print(f"Core {i}: {percentage}%")
+    
+print(f"Total CPU Usage: {psutil.cpu_percent()}%")
+```
+
