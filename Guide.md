@@ -975,3 +975,41 @@ print(f"Percentage: {swap.percent}%")
 - Virtual memory is a combination of RAM and disk space that running processes can use. 
 - Swap space is the portion of virtual memory that is on the hard disk, used when RAM is full. 
 - `swap_memory()` method returns stats about swap memory usage.
+
+## Disk Usage
+
+```py
+partitions = psutil.disk_partitions()
+
+for partition in partitions:
+
+    print(f"Device : {partition.device}")
+    
+    print(f"Mountpoint : {partition.mountpoint}")
+    
+    print(f"File system type : {partition.fstype}")
+    
+    try:
+    
+        partition_usage = psutil.disk_usage(partition.mountpoint)
+    
+    except PermissionError:
+
+        continue
+        
+    print(f"Total Size : {get_size(partition_usage.total)}")
+    
+    print(f"Used : {get_size(partition_usage.used)}")
+    
+    print(f"Free : {get_size(partition_usage.free)}")
+    
+    print(f"Percentage : {partition_usage.percent}%")
+
+disk_io = psutil.disk_io_counters()
+
+print(f"Total read : {get_size(disk_io.read_bytes)}")
+
+print(f"Total write : {get_size(disk_io.write_bytes)}")
+```
+
+- `disk_usage()` function return disk usage statistics as a namedtuple, including total, used and free space expressed in bytes.
