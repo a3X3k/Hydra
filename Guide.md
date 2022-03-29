@@ -1049,3 +1049,36 @@ print(f"Total Bytes Received: {get_size(net_io.bytes_recv)}")
 ```
 
 - `net_if_addrs()` function returns the addresses associated with each network interface card installed on the system.
+
+## GPU Information
+
+- GPUtil is a Python module for getting the GPU status for NVIDIA GPUs only, it locates all GPUs on the computer, determines their availability, and returns an ordered list of available GPUs. 
+- It requires the latest NVIDIA driver installed.
+
+```py
+pip3 install gputil
+```
+
+```py
+import GPUtil
+
+gpus = GPUtil.getGPUs()
+
+for gpu in gpus:
+            
+   print(f"\nGPU ID : {gpu.id}")
+
+   print(f"\nGPU Name : {gpu.name}")
+
+   print(f"\nTotal Memory : {gpu.memoryTotal} MB")
+
+   print(f"\nUsed Memory : {gpu.memoryUsed} MB")
+
+   print(f"\nFree Memory : {gpu.memoryFree} MB")
+
+   print(f"\nGPU Usage : {gpu.load*100}%")
+
+   print(f"\nGPU Temperature : {gpu.temperature} °C")
+ 
+   print(f"\nGPU UUID : {gpu.uuid}")
+```
