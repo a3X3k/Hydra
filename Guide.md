@@ -878,11 +878,11 @@ print(f"Operating system version: {platform.version()}")
 
 - Python library psutil allows us to get the stats of our CPU.
 
-```
+```py
 import psutil
 ```
 
-```
+```py
 print(f"Number of physical cores: {psutil.cpu_count(logical=False)}")
 
 print(f"Number of logical cores: {psutil.cpu_count(logical=True)}")
