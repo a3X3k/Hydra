@@ -966,5 +966,10 @@ print(f"Percentage: {swap.percent}%")
 ```
 
 - `virtual_memory()` method returns stats about system memory usage as a namedtuple, including fields such as total (total physical memory available), available (available memory, i.e not used), used and percent (i.e percentage). 
-- `swap_memory()` is the same but for swap memory.
+
+- Swap space is a space on a hard disk that is a substitute for physical memory whenever our computer runs short of physical memory.
+- Swap space helps the computer’s operating system in pretending that it has more RAM than it actually has. 
+- Virtual memory is a combination of RAM and disk space that running processes can use. 
+- Swap space is the portion of virtual memory that is on the hard disk, used when RAM is full. 
+- `swap_memory()` method returns stats about swap memory usage.
 - `get_size()` function prints values in a scaled manner, as these statistics are expressed in bytes.
