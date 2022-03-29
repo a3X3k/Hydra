@@ -840,13 +840,13 @@ subprocess.getoutput('ls /home')
 
 - The platform module in Python allows us to access the underlying platform’s data.
 - This includes:
- - Computer network name
- - Machine type
- - Processor type
- - Platform type
- - Operating system
- - Operating system release
- - Operating system version
+  - Computer network name
+  - Machine type
+  - Processor type
+  - Platform type
+  - Operating system
+  - Operating system release
+  - Operating system version
 
 
 
