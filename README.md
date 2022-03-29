@@ -48,6 +48,6 @@ pyuic5 -x JarvisUI.ui -o JarvisUI.py
 | S Abhishek | <ul><li>Text To Speech</li><li>Speech Recognition</li><li>Greeting Message</li><li>Launching & Closing Notepad</li><li>Launching & Closing Command Prompt</li><li>Launching & Closing a Web Browser</li><li>Launching Camera</li><li>Playing Music</li><li>Getting IP Information</li><li>Getting Summary from Wikipedia</li><li>Sending a WhatsApp Message</li><li>Playing YouTube Song</li><li>Sending Emails with and without attachments</li><li>Switching Windows</li><li>News</li><li>Locating Files</li><li>Script inside a Script</li></ul> | | 
   | Harsha Sathish   | <ul><li>Navigating using Google Maps</li><li>Open any Movie from Amazon Prime</li><li>Make Travel Plans using MakemyTrip</li><li>Check PNR Status, Live Status of Trains</li><li>Book Movie tickets using BookMyShow</li><li>Send Messages on Discord</li></ul> | |
   | Arvind Kumar K   | <ul><li>Book Train, Flight, Bus, Cab, Hotel</li><li>Streaming Movies on OTT Platforms</li><li>Online Food Ordering</li></ul>
-  | Kumar Anurag |<ul><li>Date and time</li><li>Checking System Stats &nbsp <li>CPU %</li><li>Battery %</li><li>Total & Free Memory %</li></li><li>Shutting down the system</li></ul>  |
+  | Kumar Anurag |<ul><li>Date and time</li><li>Checking System Stats</li><li>CPU %</li><li>Battery %</li><li>Total & Free Memory %</li><li>Shutting down the system</li></ul>  |
   
 </div>
