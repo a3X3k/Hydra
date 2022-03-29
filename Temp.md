@@ -16,10 +16,6 @@ def Discord():
     
     r = requests.post("https://discord.com/api/v9/channels/938752936232763404/messages", data=payload,headers = header)
 ```
-   
-```py
-Battery_percent = psutil.sensors_battery().percent
-```
 
 ```py
 Speak("Do you want to shutdown your computer sir?")
