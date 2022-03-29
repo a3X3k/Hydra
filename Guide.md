@@ -1013,3 +1013,39 @@ print(f"Total write : {get_size(disk_io.write_bytes)}")
 ```
 
 - `disk_usage()` function return disk usage statistics as a namedtuple, including total, used and free space expressed in bytes.
+
+## Network Stats
+
+```py
+if_addrs = psutil.net_if_addrs()
+
+for interface_name, interface_addresses in if_addrs.items():
+
+    for address in interface_addresses:
+    
+        print(f"=== Interface: {interface_name} ===")
+        
+        if str(address.family) == 'AddressFamily.AF_INET':
+        
+            print(f"  IP Address: {address.address}")
+            
+            print(f"  Netmask: {address.netmask}")
+            
+            print(f"  Broadcast IP: {address.broadcast}")
+            
+        elif str(address.family) == 'AddressFamily.AF_PACKET':
+        
+            print(f"  MAC Address: {address.address}")
+            
+            print(f"  Netmask: {address.netmask}")
+            
+            print(f"  Broadcast MAC: {address.broadcast}")
+            
+net_io = psutil.net_io_counters()
+
+print(f"Total Bytes Sent: {get_size(net_io.bytes_sent)}")
+
+print(f"Total Bytes Received: {get_size(net_io.bytes_recv)}")
+```
+
+- `net_if_addrs()` function returns the addresses associated with each network interface card installed on the system.
