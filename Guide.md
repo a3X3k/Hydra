@@ -930,6 +930,20 @@ print(f"Total CPU Usage: {psutil.cpu_percent()}%")
 ## Memory Usage
 
 ```py
+def get_size(bytes, suffix="B"):
+
+    factor = 1024
+    
+    for unit in ["", "K", "M", "G", "T", "P"]:
+    
+        if bytes < factor:
+        
+            return f"{bytes:.2f}{unit}{suffix}"
+            
+        bytes /= factor
+```
+
+```py
 svmem = psutil.virtual_memory()
 
 print(f"Total: {get_size(svmem.total)}")
@@ -953,19 +967,4 @@ print(f"Percentage: {swap.percent}%")
 
 - `virtual_memory()` method returns stats about system memory usage as a namedtuple, including fields such as total (total physical memory available), available (available memory, i.e not used), used and percent (i.e percentage). 
 - `swap_memory()` is the same but for swap memory.
-
-```py
-def get_size(bytes, suffix="B"):
-
-    factor = 1024
-    
-    for unit in ["", "K", "M", "G", "T", "P"]:
-    
-        if bytes < factor:
-        
-            return f"{bytes:.2f}{unit}{suffix}"
-            
-        bytes /= factor
-```
-
-- `get_size()` function prints values in a scaled manner, as the statistics are expressed in bytes.
+- `get_size()` function prints values in a scaled manner, as these statistics are expressed in bytes.
