@@ -869,9 +869,7 @@ print(f"Operating system release: {platform.release()}")
 
 print(f"Operating system version: {platform.version()}")
 
-boot_time_timestamp = psutil.boot_time()
-
-bt = datetime.fromtimestamp(boot_time_timestamp)
+bt = datetime.fromtimestamp(psutil.boot_time())
 
 print(f"Boot Time: {bt.year}/{bt.month}/{bt.day} {bt.hour}:{bt.minute}:{bt.second}")
 ```
