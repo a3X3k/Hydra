@@ -20,6 +20,10 @@ import time
 import pygetwindow as gw
 import subprocess
 import win32api
+import psutil
+import platform
+import GPUtil
+import requests
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import QTimer, QTime, QDate, Qt
 from PyQt5.QtGui import QMovie
@@ -928,6 +932,216 @@ def Script():
 
                             speak(f"\nThe output is {subprocess.getoutput('python '+ target)}")
 
+
+def get_size(bytes, suffix="B"):
+
+    factor = 1024
+
+    for unit in ["", " K", " M", " G", " T", " P"]:
+
+        if bytes < factor:
+
+            return f"{bytes:.2f}{unit}{suffix}"
+        
+        bytes /= factor
+
+def Get_System_Stats():
+
+    speak("\nDo you want to know about your System or CPU or Memory or Disk or Network or GPU Sir?")
+
+    query = takecommand().lower()
+
+    if "system" in query:
+
+        speak(f"\nComputer network name : {platform.node()}")
+
+        speak(f"\nMachine type : {platform.machine()}")
+
+        speak(f"\nProcessor type : {platform.processor()}")
+
+        speak(f"\nPlatform type : {platform.platform()}")
+    
+        speak(f"\nOperating system : {platform.system()}")
+
+        speak(f"\nOperating system Release : {platform.release()}")
+
+        speak(f"\nOperating System Version : {platform.version()}")
+
+        Boot = datetime.datetime.fromtimestamp(psutil.boot_time())
+
+        speak(f"\nBoot Time : {Boot.year}/{Boot.month}/{Boot.day} {Boot.hour}:{Boot.minute}:{Boot.second}")
+
+        speak(f"\nBattery Percentage : {psutil.sensors_battery().percent}%")
+    
+    elif "cpu" in query:
+
+        speak(f"\nNumber of Physical cores : {psutil.cpu_count(logical=False)}")
+
+        speak(f"\nNumber of Logical cores : {psutil.cpu_count(logical=True)}")
+
+        speak(f"\nCurrent CPU frequency : {psutil.cpu_freq().current} MHz")
+
+        speak(f"\nMin CPU frequency : {psutil.cpu_freq().min} MHz")
+
+        speak(f"\nMax CPU frequency : {psutil.cpu_freq().max} MHz")
+
+        speak(f"\nCurrent CPU Utilization : {psutil.cpu_percent(interval=1)}")
+
+        speak("\nCPU Usage Per Core")
+
+        for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1)):
+
+            speak(f"\n\tCore {i}: {percentage}%")
+            
+        speak(f"\nTotal CPU Usage: {psutil.cpu_percent()}%")
+
+    elif "memory" in query:
+
+        svmem = psutil.virtual_memory()
+
+        speak(f"\nTotal : {get_size(svmem.total)}")
+
+        speak(f"\nAvailable : {get_size(svmem.available)}")
+
+        speak(f"\nUsed : {get_size(svmem.used)} which is {svmem.percent}%")
+
+        swap = psutil.swap_memory()
+
+        speak(f"\nTotal : {get_size(swap.total)}")
+
+        speak(f"\nFree : {get_size(swap.free)}")
+
+        speak(f"\nUsed : {get_size(swap.used)} which is {swap.percent}%")
+
+    elif ("disk" in query) or ("desk" in query) or ("disc" in query):
+
+        print("\nPartitions and Usage")
+
+        partitions = psutil.disk_partitions()
+
+        for partition in partitions:
+
+            speak(f"\nDevice : {partition.device}")
+
+            speak(f"\nMountpoint : {partition.mountpoint}")
+
+            speak(f"\nFile System Type : {partition.fstype}")
+
+            try:
+
+                partition_usage = psutil.disk_usage(partition.mountpoint)
+
+            except PermissionError:
+               
+                continue
+
+            speak(f"\nTotal Size : {get_size(partition_usage.total)}")
+
+            speak(f"\nUsed : {get_size(partition_usage.used)}")
+
+            speak(f"\nFree : {get_size(partition_usage.free)}")
+
+            speak(f"\nPercentage : {partition_usage.percent}%")
+
+        disk_io = psutil.disk_io_counters()
+
+        speak(f"\nTotal Read : {get_size(disk_io.read_bytes)}")
+
+        speak(f"\nTotal Write : {get_size(disk_io.write_bytes)}")
+
+    elif "network" in query:
+
+        if_addrs = psutil.net_if_addrs()
+
+        for interface_name, interface_addresses in if_addrs.items():
+
+            for address in interface_addresses:
+
+                speak(f"\nInterface : {interface_name}")
+
+                if str(address.family) == 'AddressFamily.AF_INET':
+
+                    speak(f"\nIP Address: {address.address}")
+
+                    speak(f"\nNetmask: {address.netmask}")
+
+                    speak(f"\nBroadcast IP: {address.broadcast}")
+
+                elif str(address.family) == 'AddressFamily.AF_PACKET':
+
+                    speak(f"\nMAC Address: {address.address}")
+
+                    speak(f"\nNetmask: {address.netmask}")
+
+                    speak(f"\nBroadcast MAC: {address.broadcast}")
+
+        net_io = psutil.net_io_counters()
+
+        speak(f"\nTotal Bytes Sent : {get_size(net_io.bytes_sent)}")
+
+        speak(f"\nTotal Bytes Received : {get_size(net_io.bytes_recv)}")
+
+    elif "gpu" in query:
+
+        gpus = GPUtil.getGPUs()
+
+        for gpu in gpus:
+            
+            speak(f"\nGPU ID : {gpu.id}")
+
+            speak(f"\nGPU Name : {gpu.name}")
+
+            speak(f"\nTotal Memory : {gpu.memoryTotal} MB")
+
+            speak(f"\nUsed Memory : {gpu.memoryUsed} MB")
+
+            speak(f"\nFree Memory : {gpu.memoryFree} MB")
+
+            speak(f"\nGPU Usage : {gpu.load*100}%")
+
+            speak(f"\nGPU Temperature : {gpu.temperature} °C")
+ 
+            speak(f"\nGPU UUID : {gpu.uuid}")
+
+    else:
+
+        speak("\nOhoov, Returning to Hydra's Main Features")
+
+def Shut():
+
+    speak("\nDo you want to shutdown your System Sir?")
+
+    while True:
+
+        command = takecommand()
+        
+        if "yes" in command:
+
+            speak("\nAlright, Shutting the down the system. See you Later... Bye!")
+
+            os.system("shutdown /s /t 30")
+
+            break
+
+        else:
+
+            speak("\nOhoov, Returning to Hydra's Main Features")
+
+
+def Send_Discord():
+
+    Url = "https://discord.com/api/webhooks/958750969812885544/XwPZLamQhoddbZXj23J_tr9tWsxTlsbPJ66ROPhNORCpSJEWAxubF7_PLuCCPmQP2ND8"
+
+    speak("\nWhat do you want me to send Sir?")
+
+    data = {"content" : takecommand()}
+
+    speak("\nSending Message Sir...")
+
+    requests.post(Url, json = data)
+
+    
+
 class MainThread(QThread):
 
     def __init__(self):
@@ -937,7 +1151,6 @@ class MainThread(QThread):
     def run(self):
 
         self.TaskExecution()
-
 
     def TaskExecution(self):
 
@@ -1153,6 +1366,16 @@ class MainThread(QThread):
 
                 Script()
 
+
+            elif "my system" in query:
+
+                Get_System_Stats()
+
+
+            elif ("shutdown" in query) or ("turn" and "off" and "system" in query):
+
+                Shut()
+                
             
             elif "quit" in query:
 
@@ -1162,9 +1385,16 @@ class MainThread(QThread):
 
                     speak("\nThankyou for using me Sir!")
 
+                    exit(app.exec_())
+
                     break
 
-                else:
+            elif "discord" in query:
+
+                Send_Discord()
+
+                
+            else:
 
                     continue
 
