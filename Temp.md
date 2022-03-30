@@ -16,18 +16,3 @@ def Discord():
     
     r = requests.post("https://discord.com/api/v9/channels/938752936232763404/messages", data=payload,headers = header)
 ```
-
-```py
-Speak("Do you want to shutdown your computer sir?")
-while True:
-    command = take_commands()
-    if "no" in command:
-        Speak("Thank u sir I will not shut down the computer")
-        break
-    if "yes" in command:
-        # Shutting down
-        Speak("Shutting the computer")
-        os.system("shutdown /s /t 30")
-        break
-    Speak("Say that again sir")
-```
