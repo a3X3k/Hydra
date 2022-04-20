@@ -125,6 +125,20 @@ def Instagram_Pro(self):
             self.talk("I am done boss, profile picture is saved in your main folder. ")
         else:
             pass
+            
+            
+            
+#Opensource accounts
+    def open_source(self,command):
+        print(command)
+        if 'github' in command:
+            self.talk('opening your github')
+            webbrowser.open('https://github.com/BolisettySujith')
+        elif 'gitlab' in command:
+            self.talk('opening your gitlab')
+            webbrowser.open('https://gitlab.com/-/profile')
+        else :
+            self.No_result_found()
 
 
 ```
