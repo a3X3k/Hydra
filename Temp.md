@@ -93,5 +93,20 @@ def InternetSpeed(self):
         up = st.upload()
         up = up/(1000000)
         print(dl,up)
-        self.talk(f"Boss, we have {dl} megabytes per second downloading speed and {up} megabytes per second uploading speed")        
+        self.talk(f"Boss, we have {dl} megabytes per second downloading speed and {up} megabytes per second uploading speed") 
+        
+ def pdf_reader(self):
+        self.talk("Boss enter the name of the book which you want to read")
+        n = input("Enter the book name: ")
+        n = n.strip()+".pdf"
+        book_n = open(n,'rb')
+        pdfReader = PyPDF2.PdfFileReader(book_n)
+        pages = pdfReader.numPages
+        self.talk(f"Boss there are total of {pages} in this book")
+        self.talk("plsase enter the page number Which I nedd to read")
+        num = int(input("Enter the page number: "))
+        page = pdfReader.getPage(num)
+        text = page.extractText()
+        print(text)
+        self.talk(text)
 ```
