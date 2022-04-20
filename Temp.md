@@ -63,7 +63,7 @@ def show_me_my_images():
         return False
         
         
-        
+import qrcode
 def qrCodeGenerator(self):
         self.talk(f"Boss enter the text/link that you want to keep in the qr code")
         input_Text_link = input("Enter the Text/Link : ")
@@ -84,7 +84,8 @@ def qrCodeGenerator(self):
         img.save(f"QRCodes\{QRfile_name}")
         self.talk(f"Boss the qr code has been generated")
         
-        
+
+import speedtest
 def InternetSpeed(self):
         self.talk("Wait a few seconds boss, checking your internet speed")
         st = speedtest.Speedtest()
@@ -95,6 +96,8 @@ def InternetSpeed(self):
         print(dl,up)
         self.talk(f"Boss, we have {dl} megabytes per second downloading speed and {up} megabytes per second uploading speed") 
         
+        
+ 
  def pdf_reader(self):
         self.talk("Boss enter the name of the book which you want to read")
         n = input("Enter the book name: ")
