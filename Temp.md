@@ -84,4 +84,14 @@ def qrCodeGenerator(self):
         img.save(f"QRCodes\{QRfile_name}")
         self.talk(f"Boss the qr code has been generated")
         
+        
+def InternetSpeed(self):
+        self.talk("Wait a few seconds boss, checking your internet speed")
+        st = speedtest.Speedtest()
+        dl = st.download()
+        dl = dl/(1000000) #converting bytes to megabytes
+        up = st.upload()
+        up = up/(1000000)
+        print(dl,up)
+        self.talk(f"Boss, we have {dl} megabytes per second downloading speed and {up} megabytes per second uploading speed")        
 ```
