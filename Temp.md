@@ -109,4 +109,22 @@ def InternetSpeed(self):
         text = page.extractText()
         print(text)
         self.talk(text)
+        
+        
+
+def Instagram_Pro(self):
+        self.talk("Boss please enter the user name of Instagram: ")
+        name = input("Enter username here: ")
+        webbrowser.open(f"www.instagram.com/{name}")
+        time.sleep(5)
+        self.talk("Boss would you like to download the profile picture of this account.")
+        cond = self.take_Command()
+        if('download' in cond):
+            mod = instaloader.Instaloader()
+            mod.download_profile(name,profile_pic_only=True)
+            self.talk("I am done boss, profile picture is saved in your main folder. ")
+        else:
+            pass
+
+
 ```
