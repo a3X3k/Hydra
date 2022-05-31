@@ -17,6 +17,10 @@
   <br/>
   
 ```py
+powershell -command "Invoke-WebRequest -Uri https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -OutFile ~\miniconda.exe"
+```
+
+```py
 conda create -n ENV_NAME python==3.8.5
 
 conda activate ENV_NAME
