@@ -16,22 +16,46 @@
   
   <br/>
   
+### Step 1
+  
 [Download Anaconda](https://repo.anaconda.com/archive/Anaconda3-2022.05-Windows-x86_64.exe)
+
+### Step 2
 
 ```py
 conda create -n ENV_NAME python==3.8.5
 
 conda activate ENV_NAME
-
-conda env remove -n ENV_NAME
 ```
+
+### Step 3
 
 ```py
 pip install windows-curses pyttsx3 SpeechRecognition opencv-python wikipedia pywhatkit flask yagmail psutil GPUtil pyqt5 language-tool-python cloudscraper python-docx pipwin
+```
 
+### Step 4
+
+```py
 conda install pywin32
+```
 
+### Step 5
+
+```py
 pipwin install pyaudio
+```
+
+### Step 6
+
+```py
+python Hydra.py
+```
+
+### Step 7
+
+```py
+conda env remove -n ENV_NAME
 ```
 
 ```py
