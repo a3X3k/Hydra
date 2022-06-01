@@ -23,12 +23,6 @@ conda create -n ENV_NAME python==3.8.5
 
 conda activate ENV_NAME
 
-pip install -r requirements.txt
-
-pip install pipwin
-
-pipwin install pyaudio
-
 conda env remove -n ENV_NAME
 ```
 
@@ -48,10 +42,14 @@ pip install pyqt5
 pip install language-tool-python
 pip install cloudscraper
 pip install python-docx
+pip install pipwin
+pipwin install pyaudio
 ```
 
 ```py
-conda list -e > requirements.txt
+pip freeze > requirements.txt
+
+pip install -r requirements.txt
 ```
 
 ```py
