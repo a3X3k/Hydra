@@ -16,9 +16,7 @@
   
   <br/>
   
-```py
-powershell -command "Invoke-WebRequest -Uri https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -OutFile ~\miniconda.exe"
-```
+[Download Anaconda](https://repo.anaconda.com/archive/Anaconda3-2022.05-Windows-x86_64.exe)
 
 ```py
 conda create -n ENV_NAME python==3.8.5
