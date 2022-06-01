@@ -33,8 +33,6 @@ conda env remove -n ENV_NAME
 ```
 
 ```py
-pip freeze > requirements.txt  # Python3
-
 conda list -e > requirements.txt
 ```
 
