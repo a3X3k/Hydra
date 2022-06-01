@@ -47,9 +47,8 @@ pipwin install pyaudio
 ```
 
 ```py
-pip freeze > requirements.txt
-
-pip install -r requirements.txt
+pip install pipreqs
+python -m  pipreqs.pipreqs
 ```
 
 ```py
