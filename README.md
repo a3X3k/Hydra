@@ -33,6 +33,24 @@ conda env remove -n ENV_NAME
 ```
 
 ```py
+pip install windows-curses
+pip install pyttsx3
+pip install SpeechRecognition
+pip install opencv-python
+pip install wikipedia
+pip install pywhatkit
+pip install flask
+pip install yagmail
+conda install pywin32
+pip install psutil
+pip install GPUtil
+pip install pyqt5
+pip install language-tool-python
+pip install cloudscraper
+pip install python-docx
+```
+
+```py
 conda list -e > requirements.txt
 ```
 
