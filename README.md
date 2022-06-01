@@ -58,8 +58,11 @@ python Hydra.py
 conda env remove -n ENV_NAME
 ```
 
+### Freeze the Requirement Packages
+
 ```py
 pip install pipreqs
+
 python -m  pipreqs.pipreqs
 ```
 
